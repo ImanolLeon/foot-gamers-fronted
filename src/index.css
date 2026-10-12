@@ -1,0 +1,273 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   SISTEMA DE DISEÑO — FOOT GAMER'S
+   Tokens expone como utilidades de Tailwind v4 (bg-magenta, text-pink…)
+   ============================================================ */
+@theme {
+  /* Fondos */
+  --color-bg: #0a0210;
+  --color-bg-2: #12041a;
+  --color-surface: #14061c;
+  --color-nav: #08010d;
+
+  /* Marca */
+  --color-magenta: #c210a0;
+  --color-magenta-deep: #a010c0;
+  --color-pink: #e070d0;
+  --color-pink-light: #f080dd;
+  --color-purple: #4a0f6b;
+  --color-purple-dark: #2a0844;
+
+  /* Texto */
+  --color-ink: #ffffff;
+  --color-ink-2: rgba(255, 255, 255, 0.55);
+  --color-ink-3: rgba(255, 255, 255, 0.35);
+
+  /* Bordes */
+  --color-line: rgba(200, 20, 160, 0.25);
+  --color-line-soft: rgba(255, 255, 255, 0.08);
+
+  /* Tipografía */
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Layout */
+  --container-lg: 1200px;
+  --nav-h: 70px;
+
+  /* Animación */
+  --animate-fade-up: fade-up 0.7s ease both;
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-magenta text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-3 outline-pink;
+  }
+
+  /* Compensa la navbar fija al saltar a un ancla */
+  section[id] {
+    scroll-margin-top: 86px;
+  }
+}
+
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+@layer components {
+  /* Contenedor */
+  .container-page {
+    @apply mx-auto w-full max-w-lg px-5 md:px-10 lg:px-20;
+  }
+
+  /* Eyebrow: pre-título en mayúsculas con línea magenta */
+  .eyebrow {
+    @apply mb-4 flex items-center gap-3 text-xs font-semibold tracking-[0.3em] text-magenta uppercase;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-0.5 w-10 flex-none rounded-full bg-gradient-to-r from-magenta to-transparent;
+  }
+  .eyebrow-center {
+    @apply justify-center;
+  }
+  .eyebrow-center::before {
+    @apply hidden;
+  }
+
+  /* Botones */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-lg border border-transparent
+           px-6 text-[15px] font-bold whitespace-nowrap transition duration-300 ease-out
+           hover:-translate-y-[3px] h-[50px];
+  }
+  .btn-primary {
+    @apply bg-gradient-to-br from-magenta to-magenta-deep text-white
+           shadow-[0_0_24px_rgba(194,16,160,0.45)]
+           hover:shadow-[0_0_38px_rgba(194,16,160,0.7),0_10px_24px_-12px_rgba(194,16,160,0.9)];
+  }
+  .btn-ghost {
+    @apply border-white/25 bg-white/5 text-white backdrop-blur-sm
+           hover:border-pink/60 hover:shadow-[0_0_22px_rgba(194,16,160,0.35)];
+  }
+  .btn-outline {
+    @apply border-magenta bg-transparent text-pink hover:bg-magenta/10 hover:shadow-[0_0_20px_rgba(194,16,160,0.35)];
+  }
+  .btn-lg {
+    @apply h-14 px-7 text-base;
+  }
+  .btn-sm {
+    @apply h-10 px-4 text-[13px];
+  }
+
+  /* Tarjeta de la sección de comunidad */
+  .feature-card {
+    @apply bg-surface flex min-h-[230px] flex-col rounded-2xl border border-line p-6
+           shadow-[0_18px_40px_-22px_rgba(194,16,160,0.85)]
+           transition duration-300 ease-out
+           hover:-translate-y-1 hover:border-magenta
+           hover:shadow-[0_0_30px_rgba(194,16,160,0.35),0_22px_44px_-24px_rgba(194,16,160,0.9)];
+  }
+  .feature-icon {
+    @apply mb-5 grid size-12 flex-none place-items-center rounded-xl text-white
+           bg-gradient-to-br from-magenta to-purple
+           shadow-[0_0_20px_rgba(194,16,160,0.45)];
+  }
+
+  /* Pill de equipos */
+  .pill {
+    @apply inline-flex h-12 flex-none items-center gap-2.5 rounded-full border border-white/12
+           bg-surface px-5 text-sm font-semibold whitespace-nowrap text-white/85
+           transition duration-300 ease-out
+           hover:-translate-y-[3px] hover:border-magenta hover:text-white
+           hover:shadow-[0_0_18px_rgba(194,16,160,0.35)];
+  }
+
+  /* Degradado de texto para el título hero */
+  .text-gradient-title {
+    @apply bg-gradient-to-br from-pink-light via-magenta to-magenta-deep bg-clip-text text-transparent;
+  }
+
+  /* ============================================================
+     PANEL DE ADMINISTRACIÓN
+     El sidebar conserva la identidad de marca (morado). El área
+     de contenido va en claro: se remapean los tokens de color
+     dentro de .panel-content, así que `bg-surface`, `text-ink`,
+     `border-line`… se resuelven solos a la paleta clara. Los
+     acentos magenta quedan como matiz, no como fondo dominante.
+  ============================================================ */
+
+  /* Scope claro del contenido. El sidebar queda fuera, asi que
+     sigue usando los tokens oscuros de :root. */
+  .panel-content {
+    --color-bg: #f7f4fa;
+    --color-bg-2: #ffffff;
+    --color-surface: #ffffff;
+    --color-ink: #1a0a22;
+    --color-ink-2: rgba(26, 10, 34, 0.62);
+    --color-ink-3: rgba(26, 10, 34, 0.42);
+    --color-line: rgba(194, 16, 160, 0.16);
+    --color-line-soft: rgba(26, 10, 34, 0.08);
+
+    @apply bg-bg text-ink;
+  }
+
+  /* Bloque estándar del panel (métricas, gráficas, tablas) */
+  .panel-surface {
+    @apply rounded-2xl border border-line bg-surface
+           shadow-[0_1px_3px_rgba(26,10,34,0.07)]
+           transition duration-300 ease-out
+           hover:border-magenta/40
+           hover:shadow-[0_10px_28px_-14px_rgba(194,16,160,0.4)];
+  }
+
+  /* Igual que .panel-surface pero sin hover: tablas y cabeceras */
+  .panel-surface-flat {
+    @apply rounded-2xl border border-line bg-surface
+           shadow-[0_1px_3px_rgba(26,10,34,0.07)];
+  }
+
+  /* Emblema / icono de sección: acento de marca sobre fondo claro */
+  .panel-badge {
+    @apply grid place-items-center bg-gradient-to-br from-magenta to-purple text-white
+           shadow-[0_2px_10px_-2px_rgba(194,16,160,0.5)];
+  }
+
+  /* Chip informativo (métricas, estados, construction badge) */
+  .panel-chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-magenta/10 px-2.5 py-1
+           text-[11px] font-bold text-magenta;
+  }
+
+  /* Botón del panel: esqueleto de .btn-ghost adaptado al claro */
+  .panel-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-lg
+           border border-line bg-surface text-ink-2
+           transition duration-300 ease-out
+           hover:border-magenta/45 hover:bg-magenta/5 hover:text-magenta;
+  }
+
+  /* Revelado por IntersectionObserver */
+  .reveal {
+    @apply translate-y-[26px] opacity-0 transition-[opacity,transform] duration-700 ease-out;
+  }
+  .reveal-visible {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+/* ============================================================
+   UTILIDADES
+   ============================================================ */
+@utility mask-fade-right {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.25) 26%, #000 62%);
+  mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.25) 26%, #000 62%);
+}
+
+@utility mask-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   ACCESIBILIDAD — respeta "reducir movimiento"
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    @apply translate-y-0 opacity-100;
+  }
+}
