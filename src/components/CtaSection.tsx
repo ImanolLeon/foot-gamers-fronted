@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { PitchMarkings } from './PitchMarkings';
 import { RegistroModal } from './RegistroModal';
-import { CTA_DETAILS, CTA_SOCIALS } from '../data/content';
-import { useAuth } from '../hooks/useAuth';
+import { CTA_DETAILS } from '../data/content';
+
 
 export function CtaSection() {
-  const { isAuthenticated } = useAuth();
+
   const [registroAbierto, setRegistroAbierto] = useState(false);
 
   return (
