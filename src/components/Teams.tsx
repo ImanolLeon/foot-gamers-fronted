@@ -1,45 +1,45 @@
-import { ArrowRight, Shield } from './Icons';
-import { Reveal } from './Reveal';
+import { Shield } from './Icons';
 import { TEAMS } from '../data/content';
 
 export function Teams() {
   return (
-    <section
-      id="equipos"
-      className="bg-[radial-gradient(90%_60%_at_50%_0%,rgba(74,15,107,0.28)_0%,rgba(74,15,107,0)_60%)] py-20 lg:py-26"
-    >
+    <section id="equipos" className="border-t border-pitch/15 bg-paper py-20 lg:py-28">
       <div className="container-page">
-        <Reveal className="mb-10 text-center">
-          <p className="eyebrow eyebrow-center">Equipos 2021</p>
-          <h2 className="font-display text-[clamp(28px,4vw,36px)] leading-[1.12] font-extrabold">
-            Equipos auténticos, plantillas 2021
+        <div className="flex flex-wrap items-end justify-between gap-x-12 gap-y-5">
+          <h2 className="max-w-[10ch] font-poster text-[clamp(44px,6vw,76px)] leading-[0.86] font-extrabold text-pitch uppercase">
+            Elige tu escudo
           </h2>
-        </Reveal>
+          <p className="max-w-[42ch] text-[15px] leading-[1.65] text-pitch/75">
+            Plantillas 2021, sin fichajes inventados. Los clásicos de siempre y otros doscientos
+            equipos por descubrir.
+          </p>
+        </div>
 
-        <Reveal>
-          <div
-            role="list"
-            aria-label="Equipos disponibles en el juego"
-            className="no-scrollbar -mx-1 flex snap-x snap-proximity gap-3 overflow-x-auto px-1 pb-4"
-          >
-            {TEAMS.map((team) => (
-              <a key={team} href="#equipos" role="listitem" className="pill">
-                <Shield className="size-[18px] flex-none text-magenta" />
+        <ul className="mt-10  sm:grid sm:grid-cols-2 sm:gap-x-14">
+          {TEAMS.map((team) => (
+            <li
+              key={team}
+              className="flex items-center gap-3.5  py-4 sm:py-5"
+            >
+              <Shield className="size-[18px] flex-none text-magenta" />
+              <span className="font-poster text-[22px] leading-none font-semibold text-pitch uppercase">
                 {team}
-              </a>
-            ))}
+              </span>
+            </li>
+          ))}
 
-            <a href="#equipos" role="listitem" className="pill border-magenta text-pink hover:shadow-[0_0_22px_rgba(194,16,160,0.5)]">
-              +200 equipos
-              <ArrowRight className="size-4 flex-none" />
+          <li className="">
+            <a
+              href="#torneos"
+              className="group flex items-center justify-between gap-4 py-4 text-magenta transition-colors hover:text-pitch sm:py-5"
+            >
+              <span className="font-poster text-[22px] leading-none font-bold uppercase">
+                +200 equipos
+              </span>
+              
             </a>
-          </div>
-        </Reveal>
-
-        <div
-          className="mt-7 h-px bg-gradient-to-r from-transparent via-magenta to-transparent"
-          role="presentation"
-        />
+          </li>
+        </ul>
       </div>
     </section>
   );

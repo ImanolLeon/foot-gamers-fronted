@@ -1,100 +1,128 @@
-import { Play, Video } from './Icons';
-import { BrandWaves } from './BrandWaves';
-import { Reveal } from './Reveal';
-import { HERO_IMAGE, HERO_STATS } from '../data/content';
+import { Shield } from './Icons';
+import { PitchMarkings } from './PitchMarkings';
+import { HERO_FACTS, NEXT_MATCH } from '../data/content';
 
 export function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative isolate flex min-h-[610px] flex-col items-center overflow-hidden bg-gradient-to-br from-[#1a0526] via-[#2e0a46] to-[#5a1180] md:flex-row"
-    >
-      {/* Ondas concéntricas tipo estadio */}
-      <BrandWaves className="absolute -top-[280px] -right-[180px] z-0 size-[900px] opacity-85" />
+    <section id="inicio" className="relative isolate overflow-hidden bg-paper">
+      {/* Trazado de campo: el único gesto decorativo del héroe */}
+      <PitchMarkings className="pointer-events-none absolute -right-[24%] -bottom-[38%] z-0 h-[150%] w-[120%] text-pitch/[0.07] sm:-right-[8%] sm:w-[82%]" />
 
-      {/* Viñeta inferior */}
-      <div
-        className="absolute inset-x-0 bottom-0 z-1 h-[45%] bg-gradient-to-t from-bg/55 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="container-page relative z-10 grid items-center gap-14 pt-12 pb-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,0.88fr)] lg:gap-16 lg:pt-20 lg:pb-24">
+        <div>
+        
+          <h1
+            className="hero-in mt-5 font-poster text-[clamp(56px,8vw,104px)] leading-[0.82] font-extrabold tracking-[-0.005em] text-pitch uppercase"
+            style={{ animationDelay: '120ms' }}
+          >
+            Cada jornada
+            <br />
+            tiene su
+            <br />
+            campeón
+          </h1>
 
-      <div className="container-page relative z-3 py-14 lg:py-24">
-        <div className="max-w-[640px]">
-          <Reveal>
-            <p className="eyebrow">La comunidad más grande de</p>
-          </Reveal>
+          <p
+            className="hero-in mt-7 max-w-[45ch] text-[17px] leading-[1.6] text-pitch/75"
+            style={{ animationDelay: '200ms' }}
+          >
+            Torneos semanales de PES 2021 para jugadores que quieren algo más que partidos
+            sueltos. Elige equipo, compite y deja tu nombre en la tabla.
+          </p>
 
-          <Reveal delay={80}>
-            <h1 className="font-display text-[clamp(48px,8.4vw,88px)] leading-[0.95] font-black tracking-[-0.02em]">
-              <span className="text-gradient-title block">PES &amp;</span>
-              <span className="text-gradient-title block">
-                <em className="not-italic text-white">e</em>Football
-              </span>
-            </h1>
-          </Reveal>
+          <div
+            className="hero-in mt-8 flex flex-wrap items-center gap-x-7 gap-y-4"
+            style={{ animationDelay: '280ms' }}
+          >
+      
+          </div>
 
-          <Reveal delay={160}>
-            <p className="mt-6 mb-8 max-w-[450px] text-base leading-relaxed text-white/72">
-              La edición más intensa de la saga. Controles táctiles, física realista, estadios
-              icónicos y la emoción del fútbol en cada pase.
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <div className="mb-11 flex flex-wrap gap-3.5 max-sm:flex-col">
-              <a href="#torneos" className="btn btn-primary max-sm:w-full">
-                <Play className="size-4" />
-                Jugar PES 2021
-              </a>
-              <a href="#juego" className="btn btn-ghost max-sm:w-full">
-                <Video className="size-[18px]" />
-                Ver Gameplay
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={320}>
-            <dl className="flex flex-wrap items-center max-sm:gap-y-4">
-              {HERO_STATS.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`px-7 max-sm:px-5 ${i === 0 ? 'max-sm:pl-0' : ''} ${
-                    i > 0 ? 'border-l border-white/16' : ''
-                  }`}
-                >
-                  <dd className="font-display text-[28px] leading-tight font-extrabold text-pink drop-shadow-[0_0_18px_rgba(224,112,208,0.5)]">
-                    {stat.value}
-                  </dd>
-                  <dt className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-ink-3 uppercase">
-                    {stat.label}
-                  </dt>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
+         
         </div>
-      </div>
 
-      {/* Imagen del héroe */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-2 hidden w-[46%] md:flex lg:w-[46%]">
-        <img
-          src={HERO_IMAGE}
-          alt="Futbolista con camiseta celeste y blanca besando un trofeo dorado"
-          className="mask-fade-right size-full object-cover object-[78%_center]"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </div>
+        {/* Cartelera de la próxima jornada: el objeto memorable de la página */}
+        <aside
+          className="hero-in relative w-full max-w-[420px] lg:justify-self-end"
+          aria-label="Detalles de la próxima jornada"
+          style={{ animationDelay: '300ms' }}
+        >
+          <div
+            className="absolute inset-0 translate-x-2 translate-y-2 rounded-[3px] border border-pitch/30"
+            aria-hidden="true"
+          />
 
-      {/* Variante móvil: la imagen va debajo del texto */}
-      <div className="pointer-events-none relative z-2 mt-9 h-[300px] w-full shrink-0 overflow-hidden md:hidden">
-        <img
-          src={HERO_IMAGE}
-          alt="Futbolista con camiseta celeste y blanca besando un trofeo dorado"
-          className="mask-fade-bottom size-full object-cover object-[60%_center]"
-          loading="lazy"
-          decoding="async"
-        />
+          <div className="relative rounded-[3px] bg-pitch-deep px-6 pt-6 pb-7 text-chalk shadow-[10px_10px_0_0_rgba(12,59,39,0.1)]">
+            <div className="flex items-start justify-between gap-5">
+              <div>
+                <p className="text-xs font-medium text-chalk/55">Próxima jornada</p>
+                <p className="mt-2 font-poster text-[28px] leading-[0.9] font-bold uppercase">
+                  {NEXT_MATCH.competition}
+                </p>
+              </div>
+              <div className="text-right">
+                <span className="block font-poster text-[64px] leading-[0.7] font-extrabold text-magenta">
+                  {NEXT_MATCH.matchday}
+                </span>
+                <span className="mt-1 block text-[11px] text-chalk/50">Jornada</span>
+              </div>
+            </div>
+
+            <div className="mt-6 border-t border-chalk/15 pt-5">
+              <div className="flex items-center gap-3">
+                <span
+                  className="grid size-9 flex-none place-items-center rounded-[2px] border border-chalk/25 font-poster text-sm font-bold"
+                  aria-hidden="true"
+                >
+                  TÚ
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">Tu equipo</span>
+                  <span className="block text-[11px] text-chalk/55">
+                    Elige escudo al inscribirte
+                  </span>
+                </span>
+              </div>
+
+              <p className="my-3 flex items-center gap-3 text-[11px] text-chalk/55">
+                <span className="h-px flex-1 bg-chalk/15" aria-hidden="true" />
+                contra
+                <span className="h-px flex-1 bg-chalk/15" aria-hidden="true" />
+              </p>
+
+              <div className="flex items-center gap-3">
+                <span
+                  className="grid size-9 flex-none place-items-center rounded-[2px] border border-chalk/25 text-chalk/60"
+                  aria-hidden="true"
+                >
+                  <Shield className="size-4" />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">Rival por sorteo</span>
+                  <span className="block text-[11px] text-chalk/55">Se sortea el viernes</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-5 flex items-center justify-between gap-4 text-xs text-chalk/60">
+              <span>{NEXT_MATCH.date}</span>
+              <span>{NEXT_MATCH.slots}</span>
+            </div>
+
+            {/* Perforación del ticket */}
+            <div className="relative my-5" aria-hidden="true">
+              <div className="border-t border-dashed border-chalk/20" />
+              <span className="absolute top-1/2 -left-8 size-4 -translate-y-1/2 rounded-full bg-paper" />
+              <span className="absolute top-1/2 -right-8 size-4 -translate-y-1/2 rounded-full bg-paper" />
+            </div>
+
+            <a href="#torneos" className="l-btn l-btn-chalk w-full">
+              Reservar mi cupo
+            </a>
+            <p className="mt-3 text-center text-[11px] text-chalk/55">
+              {NEXT_MATCH.left}. {NEXT_MATCH.note}.
+            </p>
+          </div>
+        </aside>
       </div>
     </section>
   );

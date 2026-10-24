@@ -1,62 +1,56 @@
-import { Download, Globe } from './Icons';
-import { Reveal } from './Reveal';
-import { CTA_SOCIALS } from '../data/content';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { PitchMarkings } from './PitchMarkings';
+import { RegistroModal } from './RegistroModal';
+import { CTA_DETAILS, CTA_SOCIALS } from '../data/content';
+import { useAuth } from '../hooks/useAuth';
 
 export function CtaSection() {
+  const { isAuthenticated } = useAuth();
+  const [registroAbierto, setRegistroAbierto] = useState(false);
+
   return (
-    <section id="torneos" className="relative overflow-hidden bg-bg py-20 text-center lg:py-32">
-      {/* Óvalo de brillo morado difuso */}
-      <div
-        className="absolute top-1/2 left-1/2 h-[560px] w-[min(1100px,130vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(122,26,168,0.45)_0%,rgba(74,15,107,0.22)_42%,rgba(194,16,160,0)_72%)] blur-[28px]"
-        aria-hidden="true"
-      />
+    <section
+      id="torneos"
+      className="relative isolate overflow-hidden border-t border-pitch/20 bg-pitch-deep text-chalk"
+    >
+      <PitchMarkings className="pointer-events-none absolute -top-[35%] right-0 z-0 h-[170%] w-[85%] text-chalk/[0.06]" />
 
-      <div className="container-page relative z-1">
-        <Reveal>
-          <h2 className="font-display text-[clamp(34px,5.2vw,48px)] leading-[1.05] font-black">
-            ¿Listo para competir con nosotros?
+      <div className="container-page relative z-10 grid gap-14 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20 lg:py-28">
+        <div>
+         
+          <h2 className="mt-4 font-poster text-[clamp(52px,8vw,104px)] leading-[0.84] font-extrabold uppercase">
+            El sábado
+            <br />
+            hay jornada
           </h2>
-        </Reveal>
 
-        <Reveal delay={80}>
-          <p className="mx-auto mt-5 mb-9 max-w-[550px] text-base leading-relaxed text-ink-2">
-            Únete a la comunidad, arma tu equipo y participa en nuestros torneos. La próxima final
-            te está esperando.
+          <p className="mt-6 max-w-[46ch] text-[16px] leading-[1.7] text-chalk/70">
+            Inscríbete antes del viernes a las 20:00. Se juega en una sola noche, con 16 equipos y
+            un campeón que se lleva algo más que el título.
           </p>
-        </Reveal>
 
-        <Reveal delay={160}>
-          <div className="mb-11 flex flex-wrap justify-center gap-3.5 max-sm:flex-col">
-            <a href="#comunidad" className="btn btn-primary btn-lg max-sm:w-full">
-              <Download className="size-[18px]" />
-              Únete a la comunidad
-            </a>
-            <a href="#equipos" className="btn btn-ghost btn-lg max-sm:w-full">
-              <Globe className="size-5" />
-              Ver próximos torneos
-            </a>
-          </div>
-        </Reveal>
+          
 
-        <Reveal delay={240}>
-          <div className="flex flex-wrap items-center justify-center gap-7 max-sm:gap-4">
-            <span className="text-xs font-semibold tracking-[0.22em] text-ink-3 uppercase">
-              Únete en
-            </span>
-            {CTA_SOCIALS.map(({ label, Icon }) => (
-              <a
-                key={label}
-                href="#comunidad"
-                aria-label={`${label} de Foot Gamer's`}
-                className="inline-flex items-center gap-2 text-xs font-medium text-ink-2 transition duration-300 ease-out hover:-translate-y-0.5 hover:text-pink"
-              >
-                <Icon className="size-[17px]" />
-                {label}
-              </a>
-            ))}
-          </div>
-        </Reveal>
+  
+        </div>
+
+        <dl className="">
+          {CTA_DETAILS.map((detail) => (
+            <div
+              key={detail.label}
+              className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1  py-4"
+            >
+              <dt className="text-sm text-chalk/55">{detail.label}</dt>
+              <dd className="font-poster text-[22px] leading-none font-semibold uppercase">
+                {detail.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
+
+      <RegistroModal open={registroAbierto} onClose={() => setRegistroAbierto(false)} />
     </section>
   );
 }

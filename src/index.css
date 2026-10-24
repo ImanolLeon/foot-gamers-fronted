@@ -28,9 +28,18 @@
   --color-line: rgba(200, 20, 160, 0.25);
   --color-line-soft: rgba(255, 255, 255, 0.08);
 
+  /* Landing — programa de partido sobre papel, tinta de césped y magenta de marca */
+  --color-paper: #f2efe4;
+  --color-paper-2: #e8e4d5;
+  --color-pitch: #0c3b27;
+  --color-pitch-deep: #052018;
+  --color-chalk: #fbf9f1;
+
   /* Tipografía */
   --font-display: 'Outfit', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-poster: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
 
   /* Layout */
   --container-lg: 1200px;
@@ -58,6 +67,17 @@
     to {
       transform: translateX(-50%);
     }
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -163,6 +183,54 @@
   /* Degradado de texto para el título hero */
   .text-gradient-title {
     @apply bg-gradient-to-br from-pink-light via-magenta to-magenta-deep bg-clip-text text-transparent;
+  }
+
+  /* ============================================================
+     LANDING — lenguaje de programa de partido
+     Superficie de papel, tinta verde césped y magenta como tinta
+     de acento. Sin sombras difusas ni tarjetas redondeadas.
+  ============================================================ */
+
+  .landing {
+    @apply bg-paper font-body text-pitch;
+  }
+
+  .landing :focus-visible {
+    outline-color: var(--color-magenta);
+  }
+
+  /* Botones impresos: planos, con esquina de papel, sin levitar */
+  .l-btn {
+    @apply inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-[2px]
+           px-6 text-[15px] font-semibold whitespace-nowrap
+           transition-colors duration-200 ease-out;
+  }
+  .l-btn-primary {
+    @apply bg-magenta text-chalk hover:bg-[#a30d86];
+  }
+  .l-btn-ghost {
+    @apply border border-chalk/30 text-chalk hover:border-chalk hover:bg-chalk hover:text-pitch;
+  }
+  .l-btn-outline {
+    @apply border border-pitch/35 text-pitch hover:border-pitch hover:bg-pitch hover:text-paper;
+  }
+  .l-btn-chalk {
+    @apply bg-chalk text-pitch hover:bg-paper-2;
+  }
+
+  /* Enlaces de texto con subrayado de tinta */
+  .l-link {
+    @apply inline-flex items-center text-[15px] font-semibold text-pitch underline
+           decoration-pitch/30 decoration-2 underline-offset-[6px]
+           transition-colors duration-200 ease-out hover:text-magenta hover:decoration-magenta;
+  }
+  .l-link-inverse {
+    @apply text-chalk decoration-chalk/35 hover:text-magenta hover:decoration-magenta;
+  }
+
+  /* Entrada orquestada del hero (una sola vez, al cargar) */
+  .hero-in {
+    animation: hero-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 
   /* ============================================================

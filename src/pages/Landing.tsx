@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer';
 export function Landing() {
   return (
     /* pt compensa la navbar fija */
-    <div className="pt-[var(--nav-h)]">
+    <div className="landing pt-[var(--nav-h)]">
       <Navbar />
 
       <main id="contenido">
