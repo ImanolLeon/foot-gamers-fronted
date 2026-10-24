@@ -376,24 +376,6 @@ export function Login() {
             </button>
           </form>
 
-          {/* Credenciales del usuario semilla del backend */}
-          <div className="mt-6 rounded-xl border border-line bg-surface/60 px-4 py-3.5">
-            <p className="text-xs font-semibold tracking-[0.16em] text-ink-3 uppercase">
-              Usuario de desarrollo
-            </p>
-            <p className="mt-1.5 font-mono text-[13px] text-white/75">
-              {USUARIO_DEV.username} · {USUARIO_DEV.contrasena}
-            </p>
-            <button
-              type="button"
-              onClick={fillDemo}
-              disabled={pending}
-              className="mt-2.5 text-xs font-bold text-pink transition duration-300 ease-out hover:text-magenta disabled:opacity-50"
-            >
-              Rellenar automáticamente →
-            </button>
-          </div>
-
           <p className="mt-7 text-center text-sm text-ink-2">
             ¿No tienes cuenta?{' '}
             <button
