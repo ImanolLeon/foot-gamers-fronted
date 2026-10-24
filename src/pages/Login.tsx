@@ -19,7 +19,7 @@ import {
 } from '../components/Icons';
 import { useAuth } from '../hooks/useAuth';
 import { ApiError } from '../lib/api';
-import { USUARIO_DEV, inicioDeSesion } from '../lib/auth';
+import {  inicioDeSesion } from '../lib/auth';
 
 /* ============================================================
    VALIDACIÓN
@@ -134,15 +134,7 @@ export function Login() {
     }
   };
 
-  const fillDemo = () => {
-    setValues((prev) => ({
-      ...prev,
-      username: USUARIO_DEV.username,
-      contrasena: USUARIO_DEV.contrasena,
-    }));
-    setErrors({});
-    setFormError(null);
-  };
+  
 
   return (
     <div className="grid min-h-screen bg-bg lg:grid-cols-2">
@@ -375,6 +367,9 @@ export function Login() {
               )}
             </button>
           </form>
+
+          {/* Credenciales del usuario semilla del backend */}
+          
 
           <p className="mt-7 text-center text-sm text-ink-2">
             ¿No tienes cuenta?{' '}
