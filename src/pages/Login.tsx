@@ -1,7 +1,6 @@
 import { useEffect, useId, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Field } from '../components/Field';
-import { PitchMarkings } from '../components/PitchMarkings';
 import { RegistroModal } from '../components/RegistroModal';
 import {
   AlertCircle,
