@@ -18,10 +18,10 @@ export default defineConfig(({ mode }) => {
       tailwindcss()
     ],
     server: {
+      port: 5173,
+      strictPort: true,
       proxy: {
-        // El backend tiene `.cors().disable()` en SecurityConfig, asi que el
-        // navegador no puede llamarlo directo desde otro puerto: el proxy lo
-        // resuelve desde el mismo origen y nunca dispara un preflight CORS.
+        // El proxy elimina /api; Spring valida el Origin del navegador mediante CORS.
         [apiPrefix]: {
           target: apiTarget,
           changeOrigin: true,
@@ -30,6 +30,8 @@ export default defineConfig(({ mode }) => {
       }
     },
     preview: {
+      port: 4173,
+      strictPort: true,
       proxy: {
         [apiPrefix]: {
           target: apiTarget,

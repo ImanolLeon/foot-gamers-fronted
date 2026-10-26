@@ -38,12 +38,23 @@ export function AuthCallback() {
   }, [searchParams]);
 
   return (
-    <div className="grid min-h-screen place-items-center bg-bg px-6 text-center">
+    <div className="landing grid min-h-screen place-items-center bg-paper px-6 text-center">
       <div>
-        <p className="font-display text-xl font-black">Iniciando sesión…</p>
-        <p className="mt-2 text-sm text-ink-2">
+        <span
+          className="mx-auto mb-6 grid size-9 place-items-center rounded-[2px] bg-magenta font-poster text-base font-extrabold text-chalk"
+          aria-hidden="true"
+        >
+          FG
+        </span>
+        <p className="font-poster text-[clamp(38px,6vw,52px)] leading-[0.9] font-extrabold text-pitch uppercase">
+          Iniciando sesión…
+        </p>
+        <p className="mt-3 text-sm text-pitch/70">
           Si no te redirige automáticamente,{' '}
-          <Link to="/login" className="font-bold text-pink hover:text-magenta">
+          <Link
+            to="/login"
+            className="font-bold text-magenta underline decoration-magenta/30 decoration-2 underline-offset-[5px] hover:text-pitch"
+          >
             vuelve al login
           </Link>
           .

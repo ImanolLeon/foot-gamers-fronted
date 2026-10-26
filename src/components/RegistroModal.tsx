@@ -150,7 +150,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
       onClick={() => setShowPassword((v) => !v)}
       aria-pressed={showPassword}
       aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
-      className="grid size-10 place-items-center rounded-lg text-ink-3 transition duration-300 ease-out hover:text-pink"
+      className="grid size-10 place-items-center rounded-[2px] text-pitch/45 transition-colors duration-200 hover:text-magenta"
     >
       {showPassword ? <EyeOff className="size-[19px]" /> : <Eye className="size-[19px]" />}
     </button>
@@ -158,7 +158,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-200 grid place-items-center overflow-y-auto bg-black/75 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-200 grid place-items-center overflow-y-auto bg-pitch-deep/80 p-4 backdrop-blur-sm"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -167,18 +167,15 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={`${uid}-titulo`}
-        className="relative max-h-[92vh] w-full max-w-[460px] overflow-y-auto rounded-2xl border border-line bg-bg-2 p-6 shadow-[0_30px_80px_-30px_rgba(194,16,160,0.7)] sm:p-8"
+        className="relative max-h-[92vh] w-full max-w-[460px] overflow-y-auto rounded-[3px] border border-pitch/25 bg-paper p-6 text-pitch shadow-[0_24px_70px_-24px_rgba(5,32,24,0.6)] sm:p-8"
       >
-        <span
-          className="absolute inset-x-8 top-0 h-0.5 rounded-full bg-gradient-to-r from-transparent via-magenta to-transparent"
-          aria-hidden="true"
-        />
+        <span className="absolute inset-x-0 top-0 h-1 bg-magenta" aria-hidden="true" />
 
         <button
           type="button"
           onClick={onClose}
           aria-label="Cerrar"
-          className="absolute top-4 right-4 grid size-9 place-items-center rounded-lg text-ink-3 transition duration-300 ease-out hover:text-pink"
+          className="absolute top-5 right-4 grid size-9 place-items-center rounded-[2px] border border-pitch/20 text-pitch/50 transition-colors duration-200 hover:border-magenta hover:text-magenta"
         >
           <Close className="size-5" />
         </button>
@@ -186,11 +183,11 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
         <p className="eyebrow">Únete a la liga</p>
         <h2
           id={`${uid}-titulo`}
-          className="font-display text-[clamp(26px,4vw,32px)] leading-tight font-black"
+          className="font-poster text-[clamp(38px,6vw,46px)] leading-[0.88] font-extrabold text-pitch uppercase"
         >
-          <span className="text-gradient-title">Crear cuenta</span>
+          Crear cuenta
         </h2>
-        <p className="mt-2 text-sm text-ink-2">
+        <p className="mt-3 text-sm leading-[1.6] text-pitch/70">
           Crea tu perfil de jugador y empieza a competir en los torneos.
         </p>
 
@@ -198,7 +195,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
           {formError ? (
             <div
               role="alert"
-              className="flex items-start gap-2.5 rounded-xl border border-red-400/35 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+              className="flex items-start gap-2.5 border-l-2 border-red-700 bg-red-700/5 px-4 py-3 text-sm text-red-800"
             >
               <AlertCircle className="mt-0.5 size-4 flex-none" />
               {formError}
@@ -218,6 +215,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
             onChange={(e) => update('username', e.target.value)}
             error={errors.username}
             disabled={pending}
+            tone="light"
           />
 
           <Field
@@ -233,6 +231,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
             onChange={(e) => update('email', e.target.value)}
             error={errors.email}
             disabled={pending}
+            tone="light"
           />
 
           <Field
@@ -246,6 +245,7 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
             onChange={(e) => update('contrasena', e.target.value)}
             error={errors.contrasena}
             disabled={pending}
+            tone="light"
             addon={togglePassword}
           />
 
@@ -260,9 +260,16 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
             onChange={(e) => update('confirmar', e.target.value)}
             error={errors.confirmar}
             disabled={pending}
+            tone="light"
           />
 
-          <button type="submit" disabled={pending} className="btn btn-primary btn-lg mt-1 w-full">
+          <div className="mt-1 border-t border-dashed border-pitch/20" aria-hidden="true" />
+
+          <button
+            type="submit"
+            disabled={pending}
+            className="l-btn l-btn-primary h-[52px] w-full text-base"
+          >
             {pending ? (
               <>
                 <Spinner className="size-4.5 animate-spin" />
@@ -274,16 +281,18 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
           </button>
         </form>
 
-        <p className="mt-5 text-center text-sm text-ink-2">
-          ¿Ya tienes cuenta?{' '}
-          <button
-            type="button"
-            onClick={onClose}
-            className="font-bold text-pink transition duration-300 ease-out hover:text-magenta"
-          >
-            Inicia sesión
-          </button>
-        </p>
+        <div className="mt-5 border-t border-pitch/15 pt-5 text-center">
+          <p className="text-sm text-pitch/70">
+            ¿Ya tienes cuenta?{' '}
+            <button
+              type="button"
+              onClick={onClose}
+              className="font-bold text-magenta underline decoration-magenta/30 decoration-2 underline-offset-[5px] transition-colors duration-200 hover:text-pitch hover:decoration-pitch"
+            >
+              Inicia sesión
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );

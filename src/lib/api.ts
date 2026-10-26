@@ -71,7 +71,19 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
     );
   }
 
-  const body = (await response.json().catch(() => null)) as ApiErrorBody | null;
+  const rawBody = await response.text();
+  if (response.status === 403 && rawBody.trim() === 'Invalid CORS request') {
+    throw new ApiError(
+      `El backend rechazó el origen ${window.location.origin}. Configura CORS_ALLOWED_ORIGINS en el backend y reinícialo.`,
+      response.status
+    );
+  }
+  let body: ApiErrorBody | null = null;
+  try {
+    body = rawBody ? JSON.parse(rawBody) as ApiErrorBody : null;
+  } catch {
+    // Algunos errores de infraestructura no tienen un cuerpo JSON.
+  }
 
   if (!response.ok) {
     const mensaje =

@@ -1,19 +1,17 @@
 import { useEffect, useId, useState, type FormEvent } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Field } from '../components/Field';
-import { BrandWaves } from '../components/BrandWaves';
+import { PitchMarkings } from '../components/PitchMarkings';
 import { RegistroModal } from '../components/RegistroModal';
 import {
   AlertCircle,
   ArrowLeft,
-  Crown,
   Discord,
   Eye,
   EyeOff,
   Gamepad,
   Google,
   Lock,
-  ShieldCheck,
   Spinner,
   User,
 } from '../components/Icons';
@@ -137,111 +135,106 @@ export function Login() {
   
 
   return (
-    <div className="grid min-h-screen bg-bg lg:grid-cols-2">
+    <div className="landing grid min-h-screen bg-paper lg:grid-cols-2">
       {/* ============================================================
           PANEL DE MARCA
       ============================================================ */}
-      <aside className="relative hidden overflow-hidden bg-gradient-to-br from-[#1a0526] via-[#2e0a46] to-[#5a1180] p-12 lg:flex lg:flex-col lg:justify-between xl:p-16">
-        <BrandWaves className="absolute -top-[280px] -right-[220px] size-[900px] opacity-85" />
-        <div
-          className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-bg/60 to-transparent"
-          aria-hidden="true"
-        />
+      <aside className="relative hidden overflow-hidden bg-pitch-deep p-12 text-chalk lg:flex lg:flex-col lg:justify-between xl:p-16">
+        
+        <div className="absolute inset-x-0 top-0 h-1" aria-hidden="true" />
 
         <Link
           to="/"
-          className="relative inline-flex items-center gap-2.5 self-start transition duration-300 ease-out hover:opacity-80"
+          className="relative inline-flex items-center gap-3 self-start transition-colors duration-200 hover:text-magenta"
           aria-label="FOOT GAMER'S, volver al inicio"
         >
           <span
-            className="grid size-9 place-items-center rounded-[10px] bg-gradient-to-br from-pink via-magenta to-purple shadow-[0_0_18px_rgba(194,16,160,0.55)]"
+            className="grid size-9 place-items-center rounded-[2px] bg-magenta font-poster text-base font-extrabold text-chalk"
             aria-hidden="true"
           >
-            <Crown className="size-5 text-white" />
+            FG
           </span>
-          <span className="font-display text-lg font-black tracking-[0.1em] uppercase">
+          <span className="font-poster text-[26px] leading-none font-extrabold text-chalk uppercase">
             Foot Gamer&apos;s
           </span>
         </Link>
 
         <div className="relative max-w-md">
-          <p className="eyebrow">Vuelve al campo</p>
-          <h2 className="font-display text-[clamp(34px,4vw,52px)] leading-[1.02] font-black">
-            <span className="text-gradient-title block">Tu equipo</span>
-            <span className="text-gradient-title block">te está esperando</span>
+         
+          <h2 className="font-poster text-[clamp(46px,5vw,74px)] leading-[0.86] font-extrabold uppercase">
+            Tu equipo
+            <br />
+            te está esperando
           </h2>
-          <p className="mt-6 text-base leading-relaxed text-white/70">
+          <p className="mt-6 max-w-[42ch] text-base leading-[1.7] text-chalk/65">
             Entra para disputar la próxima jornada, seguir tu ranking y defender tu puesto en la
             tabla de campeones.
           </p>
 
-          <dl className="mt-10 flex gap-8">
+          <dl className="mt-9 flex gap-6  pt-6">
             {[
-              { value: '50M+', label: 'Jugadores' },
-              { value: '200+', label: 'Equipos' },
-              { value: '4K', label: 'Resolución' },
+              { value: '16', label: 'Equipos' },
+              { value: '21:00', label: 'Sábados' },
+              { value: '+200', label: 'Escudos' },
             ].map((stat, i) => (
-              <div key={stat.label} className={i > 0 ? 'border-l border-white/16 pl-8' : ''}>
-                <dd className="font-display text-[28px] leading-tight font-extrabold text-pink drop-shadow-[0_0_18px_rgba(224,112,208,0.5)]">
+              <div key={stat.label} className={i > 0 ? 'pl-6' : ''}>
+                <dd className="font-poster text-[32px] leading-none font-extrabold text-magenta">
                   {stat.value}
                 </dd>
-                <dt className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-ink-3 uppercase">
+                <dt className="mt-1.5 text-[10px] font-semibold tracking-[0.2em] text-chalk/45 uppercase">
                   {stat.label}
                 </dt>
               </div>
             ))}
           </dl>
+
+          
         </div>
 
-        <p className="relative flex items-center gap-2 text-xs text-ink-3">
-          <ShieldCheck className="size-3.5" />
-          Sesión protegida con token JWT
-        </p>
       </aside>
 
       {/* ============================================================
           FORMULARIO
       ============================================================ */}
-      <main className="flex items-center justify-center px-5 py-14 sm:px-8">
+      <main id="contenido" className="flex items-center justify-center px-5 py-12 sm:px-8 lg:py-16">
         <div className="w-full max-w-[440px]">
           {/* Marca en móvil */}
           <Link
             to="/"
-            className="mb-10 inline-flex items-center gap-2.5 lg:hidden"
+            className="mb-10 inline-flex items-center gap-3 lg:hidden"
             aria-label="FOOT GAMER'S, volver al inicio"
           >
             <span
-              className="grid size-9 place-items-center rounded-[10px] bg-gradient-to-br from-pink via-magenta to-purple shadow-[0_0_18px_rgba(194,16,160,0.55)]"
+              className="grid size-8 place-items-center rounded-[2px] bg-magenta font-poster text-[15px] font-extrabold text-chalk"
               aria-hidden="true"
             >
-              <Crown className="size-5 text-white" />
+              FG
             </span>
-            <span className="font-display text-lg font-black tracking-[0.1em] uppercase">
+            <span className="font-poster text-[25px] leading-none font-extrabold text-pitch uppercase">
               Foot Gamer&apos;s
             </span>
           </Link>
 
           <Link
             to="/"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-2 transition duration-300 ease-out hover:text-pink"
+            className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-pitch/70 transition-colors duration-200 hover:text-magenta"
           >
             <ArrowLeft className="size-4" />
             Volver al inicio
           </Link>
 
-          <h1 className="font-display text-[clamp(30px,5vw,38px)] leading-[1.08] font-black">
-            Iniciar Sesión
+          
+          <h1 className="font-poster text-[clamp(42px,6vw,58px)] leading-[0.88] font-extrabold text-pitch uppercase">
+            Iniciar sesión
           </h1>
-          <p className="mt-2.5 text-[15px] text-ink-2">
-            Accede a tu perfil para jugar, competir y subir de rango.
-          </p>
+          
 
           {/* Login social */}
           <div className="mt-8 grid gap-2.5">
             <button
               type="button"
               onClick={() => iniciarOAuth('discord')}
-              className="btn btn-ghost w-full"
+              className="l-btn l-btn-outline w-full"
             >
               <Discord className="size-[18px]" />
               Continuar con Discord
@@ -250,7 +243,7 @@ export function Login() {
               <button
                 type="button"
                 onClick={() => iniciarOAuth('google')}
-                className="btn btn-ghost px-3"
+                className="l-btn l-btn-outline px-3"
               >
                 <Google className="size-[18px]" />
                 Google
@@ -258,7 +251,7 @@ export function Login() {
               <button
                 type="button"
                 onClick={() => setNotice('El acceso con Steam llegará muy pronto.')}
-                className="btn btn-ghost px-3"
+                className="l-btn l-btn-outline px-3"
               >
                 <Gamepad className="size-[18px]" />
                 Steam
@@ -268,15 +261,13 @@ export function Login() {
 
           {/* Separador */}
           <div className="my-7 flex items-center gap-4">
-            <span className="h-px flex-1 bg-white/10" />
-            <span className="text-xs tracking-[0.16em] text-ink-3 uppercase">o con tu cuenta</span>
-            <span className="h-px flex-1 bg-white/10" />
+           
           </div>
 
           {notice ? (
             <p
               role="status"
-              className="mb-5 flex items-start gap-2.5 rounded-xl border border-line bg-magenta/8 px-4 py-3 text-sm text-pink"
+              className="mb-5 flex items-start gap-2.5 border-l-2 border-magenta bg-magenta/5 px-4 py-3 text-sm text-magenta"
             >
               <AlertCircle className="mt-0.5 size-4 flex-none" />
               {notice}
@@ -288,7 +279,7 @@ export function Login() {
             {formErrorAMostrar ? (
               <div
                 role="alert"
-                className="flex items-start gap-2.5 rounded-xl border border-red-400/35 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                className="flex items-start gap-2.5 border-l-2 border-red-700 bg-red-700/5 px-4 py-3 text-sm text-red-800"
               >
                 <AlertCircle className="mt-0.5 size-4 flex-none" />
                 {formErrorAMostrar}
@@ -308,6 +299,7 @@ export function Login() {
               onChange={(e) => update('username', e.target.value)}
               error={errors.username}
               disabled={pending}
+              tone="light"
             />
 
             <Field
@@ -321,13 +313,14 @@ export function Login() {
               onChange={(e) => update('contrasena', e.target.value)}
               error={errors.contrasena}
               disabled={pending}
+              tone="light"
               addon={
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-pressed={showPassword}
                   aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
-                  className="grid size-10 place-items-center rounded-lg text-ink-3 transition duration-300 ease-out hover:text-pink"
+                  className="grid size-10 place-items-center rounded-[2px] text-pitch/45 transition-colors duration-200 hover:text-magenta"
                 >
                   {showPassword ? <EyeOff className="size-[19px]" /> : <Eye className="size-[19px]" />}
                 </button>
@@ -336,13 +329,13 @@ export function Login() {
 
             {/* Opciones */}
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <label className="flex cursor-pointer items-center gap-2.5 text-sm text-ink-2 select-none">
+              <label className="flex cursor-pointer items-center gap-2.5 text-sm text-pitch/75 select-none">
                 <input
                   type="checkbox"
                   checked={values.remember}
                   onChange={(e) => update('remember', e.target.checked)}
                   disabled={pending}
-                  className="size-[18px] cursor-pointer appearance-none rounded-md border border-line bg-surface transition duration-300 ease-out checked:border-magenta checked:bg-magenta hover:border-magenta"
+                  className="size-[18px] cursor-pointer accent-magenta"
                 />
                 Recordarme
               </label>
@@ -350,49 +343,58 @@ export function Login() {
               <button
                 type="button"
                 onClick={() => setNotice('El enlace de recuperación se enviará por correo.')}
-                className="text-sm font-semibold text-pink transition duration-300 ease-out hover:text-magenta"
+                className="text-sm font-semibold text-magenta underline decoration-magenta/30 decoration-2 underline-offset-[5px] transition-colors duration-200 hover:text-pitch hover:decoration-pitch"
               >
                 ¿Olvidaste tu contraseña?
               </button>
             </div>
 
-            <button type="submit" disabled={pending} className="btn btn-primary btn-lg mt-1 w-full">
+            <button
+              type="submit"
+              disabled={pending}
+              className="l-btn l-btn-primary mt-1 h-[52px] w-full text-base"
+            >
               {pending ? (
                 <>
                   <Spinner className="size-4.5 animate-spin" />
                   Iniciando sesión…
                 </>
               ) : (
-                'Iniciar Sesión'
+                'Iniciar sesión'
               )}
             </button>
           </form>
 
-          {/* Credenciales del usuario semilla del backend */}
-          
+          <div className="mt-7  pt-6 text-center">
+            <p className="text-sm text-pitch/70">
+              ¿No tienes cuenta?{' '}
+              <button
+                type="button"
+                onClick={() => setRegistroAbierto(true)}
+                className="font-bold text-magenta underline decoration-magenta/30 decoration-2 underline-offset-[5px] transition-colors duration-200 hover:text-pitch hover:decoration-pitch"
+              >
+                Crea la tuya gratis
+              </button>
+            </p>
 
-          <p className="mt-7 text-center text-sm text-ink-2">
-            ¿No tienes cuenta?{' '}
-            <button
-              type="button"
-              onClick={() => setRegistroAbierto(true)}
-              className="font-bold text-pink transition duration-300 ease-out hover:text-magenta"
-            >
-              Crea la tuya gratis
-            </button>
-          </p>
-
-          <p className="mt-6 text-center text-xs leading-relaxed text-ink-3">
-            Al continuar aceptas nuestros{' '}
-            <Link to="/" className="underline underline-offset-2 transition hover:text-pink">
-              Términos
-            </Link>{' '}
-            y{' '}
-            <Link to="/" className="underline underline-offset-2 transition hover:text-pink">
-              Política de Privacidad
-            </Link>
-            .
-          </p>
+            <p className="mt-4 text-xs leading-relaxed text-pitch/45">
+              Al continuar aceptas nuestros{' '}
+              <Link
+                to="/"
+                className="underline underline-offset-2 transition-colors hover:text-magenta"
+              >
+                Términos
+              </Link>{' '}
+              y{' '}
+              <Link
+                to="/"
+                className="underline underline-offset-2 transition-colors hover:text-magenta"
+              >
+                Política de Privacidad
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       </main>
 
