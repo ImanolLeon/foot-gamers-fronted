@@ -12,7 +12,9 @@ import {
   Whistle,
 } from '../components/Icons';
 
-export type IconComponent = (props: { className?: string }) => React.JSX.Element;
+export type IconComponent = (props: {
+  className?: string;
+}) => React.JSX.Element;
 
 export type PanelNavItem = {
   label: string;
@@ -27,6 +29,42 @@ export type PanelNavItem = {
    ============================================================ */
 
 export const ADMIN_NAV: PanelNavItem[] = [
+  {
+    label: 'Torneos abiertos',
+    to: '/admin/disponibles',
+    Icon: Trophy,
+    descripcion: 'Inscríbete con tu cuenta de administrador.',
+  },
+  {
+    label: 'Mis torneos',
+    to: '/admin/mis-torneos',
+    Icon: Grid,
+    descripcion: 'Tus inscripciones y progreso.',
+  },
+  {
+    label: 'Mis partidos',
+    to: '/admin/mis-partidos',
+    Icon: Whistle,
+    descripcion: 'Tus partidos y resultados.',
+  },
+  {
+    label: 'Mis trofeos',
+    to: '/admin/mis-trofeos',
+    Icon: Award,
+    descripcion: 'Tus premios.',
+  },
+  {
+    label: 'Participaciones',
+    to: '/admin/participaciones',
+    Icon: Users,
+    descripcion: 'Jugadores y bandos de cada partido.',
+  },
+  {
+    label: 'Clasificación',
+    to: '/admin/clasificacion',
+    Icon: Star,
+    descripcion: 'Posiciones reales por grupo.',
+  },
   {
     label: 'Panel',
     to: '/admin',
@@ -100,7 +138,7 @@ export const JUGADOR_NAV: PanelNavItem[] = [
     label: 'Inicio',
     to: '/jugador',
     Icon: LayoutDashboard,
-    descripcion: 'Tu resumen: posición, puntos y próximos partidos.',
+    descripcion: 'Tu actividad: torneos, partidos, trofeos e inscripciones.',
   },
   {
     label: 'Torneos abiertos',

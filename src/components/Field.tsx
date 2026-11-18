@@ -79,15 +79,25 @@ export function Field({
           {...inputProps}
         />
 
-        {addon ? <span className="absolute top-1/2 right-2 -translate-y-1/2">{addon}</span> : null}
+        {addon ? (
+          <span className="absolute top-1/2 right-2 -translate-y-1/2">
+            {addon}
+          </span>
+        ) : null}
       </div>
 
       {error ? (
-        <p id={errorId} className={`mt-2 text-xs ${light ? 'text-red-700' : 'text-red-300'}`}>
+        <p
+          id={errorId}
+          className={`mt-2 text-xs ${light ? 'text-red-700' : 'text-red-300'}`}
+        >
           {error}
         </p>
       ) : hint ? (
-        <p id={hintId} className={`mt-2 text-xs ${light ? 'text-pitch/50' : 'text-ink-3'}`}>
+        <p
+          id={hintId}
+          className={`mt-2 text-xs ${light ? 'text-pitch/50' : 'text-ink-3'}`}
+        >
           {hint}
         </p>
       ) : null}

@@ -48,7 +48,10 @@ export function AdminDashboard() {
               className="panel-surface p-5 hover:-translate-y-0.5"
             >
               <div className="flex items-start justify-between gap-3">
-                <span className="panel-badge size-11 rounded-xl" aria-hidden="true">
+                <span
+                  className="panel-badge size-11 rounded-xl"
+                  aria-hidden="true"
+                >
                   <stat.Icon className="size-5" />
                 </span>
                 <span className="panel-chip">
@@ -57,7 +60,9 @@ export function AdminDashboard() {
                 </span>
               </div>
 
-              <p className="mt-5 font-display text-[32px] leading-none font-black">{stat.valor}</p>
+              <p className="mt-5 font-display text-[32px] leading-none font-black">
+                {stat.valor}
+              </p>
               <p className="mt-1.5 text-sm text-ink-2">{stat.label}</p>
             </article>
           ))}
@@ -73,14 +78,19 @@ export function AdminDashboard() {
               <h2 id="grafico" className="font-display text-lg font-bold">
                 Partidos por mes
               </h2>
-              <p className="text-xs text-ink-3">Datos de relleno · últimos 7 meses</p>
+              <p className="text-xs text-ink-3">
+                Datos de relleno · últimos 7 meses
+              </p>
             </div>
             <span className="panel-chip">Total 1.284</span>
           </header>
 
           <div className="flex h-[180px] items-end gap-2.5 sm:gap-4">
             {ADMIN_GRAFICO.map((barra) => (
-              <div key={barra.mes} className="group flex flex-1 flex-col items-center gap-2">
+              <div
+                key={barra.mes}
+                className="group flex flex-1 flex-col items-center gap-2"
+              >
                 <div className="relative flex w-full flex-1 items-end">
                   <div
                     className="w-full rounded-t-md bg-gradient-to-t from-magenta/25 to-magenta/60 transition duration-300 ease-out group-hover:from-magenta/40 group-hover:to-magenta"
@@ -90,7 +100,9 @@ export function AdminDashboard() {
                     {barra.valor}
                   </span>
                 </div>
-                <span className="text-[11px] font-semibold text-ink-3">{barra.mes}</span>
+                <span className="text-[11px] font-semibold text-ink-3">
+                  {barra.mes}
+                </span>
               </div>
             ))}
           </div>
@@ -106,7 +118,10 @@ export function AdminDashboard() {
           <ul className="grid gap-4">
             {ADMIN_ACTIVIDAD.map((item) => (
               <li key={item.id} className="flex gap-3">
-                <span className="panel-badge size-9 flex-none rounded-lg" aria-hidden="true">
+                <span
+                  className="panel-badge size-9 flex-none rounded-lg"
+                  aria-hidden="true"
+                >
                   <item.Icon className="size-4" />
                 </span>
                 <span className="min-w-0">
@@ -194,7 +209,9 @@ export function AdminDashboard() {
                     <EstadoBadge estado={torneo.estado} />
                   </td>
                   <td className="px-4 py-4 text-ink-2">{torneo.equipos}</td>
-                  <td className="px-4 py-4 text-ink-2 tabular-nums">{torneo.fecha}</td>
+                  <td className="px-4 py-4 text-ink-2 tabular-nums">
+                    {torneo.fecha}
+                  </td>
                   <td className="px-6 py-4 text-right">
                     <button
                       type="button"

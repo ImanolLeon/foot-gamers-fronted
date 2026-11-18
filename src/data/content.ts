@@ -1,4 +1,12 @@
-import { Bolt, Discord, Facebook, TrendUp, Trophy, Users, WhatsApp } from '../components/Icons';
+import {
+  Bolt,
+  Discord,
+  Facebook,
+  TrendUp,
+  Trophy,
+  Users,
+  WhatsApp,
+} from '../components/Icons';
 
 /* ---------- Navegación ---------- */
 

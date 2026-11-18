@@ -11,7 +11,7 @@ export function JugadorLayout() {
       subtitulo="Panel jugador"
       etiquetaGrupo="Mi cuenta"
       IconoVerSitio={Globe}
-      placeholderBusqueda="Buscar torneo…"
+      placeholderBusqueda="Buscar sección…"
       rolFallback="Jugador"
       notificaciones={2}
     />

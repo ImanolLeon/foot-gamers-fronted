@@ -1,4 +1,11 @@
-import { Award, Grid, Shield, Trophy, Users, Whistle } from '../components/Icons';
+import {
+  Award,
+  Grid,
+  Shield,
+  Trophy,
+  Users,
+  Whistle,
+} from '../components/Icons';
 import type { IconComponent } from './panelNav';
 
 /* ============================================================
@@ -154,18 +161,72 @@ export const ADMIN_ACTIVIDAD: AdminActividad[] = [
    ============================================================ */
 
 export const ADMIN_JUGADORES_RELLENO = [
-  { id: 1, username: 'imanol', email: 'imanol@footgamers.com', equipo: 'San Lorenzo', trofeos: 7 },
-  { id: 2, username: 'goleador_94', email: 'goleador@footgamers.com', equipo: 'Bayern München', trofeos: 5 },
-  { id: 3, username: 'mufa_hard', email: 'mufa@footgamers.com', equipo: 'FC Barcelona', trofeos: 4 },
-  { id: 4, username: 'tiro_libres', email: 'tiro@footgamers.com', equipo: 'Real Madrid', trofeos: 3 },
-  { id: 5, username: 'defensa_cero', email: 'defensa@footgamers.com', equipo: 'PSG', trofeos: 2 },
+  {
+    id: 1,
+    username: 'imanol',
+    email: 'imanol@footgamers.com',
+    equipo: 'San Lorenzo',
+    trofeos: 7,
+  },
+  {
+    id: 2,
+    username: 'goleador_94',
+    email: 'goleador@footgamers.com',
+    equipo: 'Bayern München',
+    trofeos: 5,
+  },
+  {
+    id: 3,
+    username: 'mufa_hard',
+    email: 'mufa@footgamers.com',
+    equipo: 'FC Barcelona',
+    trofeos: 4,
+  },
+  {
+    id: 4,
+    username: 'tiro_libres',
+    email: 'tiro@footgamers.com',
+    equipo: 'Real Madrid',
+    trofeos: 3,
+  },
+  {
+    id: 5,
+    username: 'defensa_cero',
+    email: 'defensa@footgamers.com',
+    equipo: 'PSG',
+    trofeos: 2,
+  },
 ];
 
 export const ADMIN_PARTICIPANTES_RELLENO = [
-  { id: 1, jugador: 'goleador_94', torneo: 'Copa Continental 2026', participaciones: 9, elo: 1840 },
-  { id: 2, jugador: 'mufa_hard', torneo: 'Liga Sabanalera', participaciones: 7, elo: 1725 },
-  { id: 3, jugador: 'tiro_libres', torneo: 'Duelo de Afters', participaciones: 6, elo: 1690 },
-  { id: 4, jugador: 'defensa_cero', torneo: 'Copa Continental 2026', participaciones: 5, elo: 1580 },
+  {
+    id: 1,
+    jugador: 'goleador_94',
+    torneo: 'Copa Continental 2026',
+    participaciones: 9,
+    elo: 1840,
+  },
+  {
+    id: 2,
+    jugador: 'mufa_hard',
+    torneo: 'Liga Sabanalera',
+    participaciones: 7,
+    elo: 1725,
+  },
+  {
+    id: 3,
+    jugador: 'tiro_libres',
+    torneo: 'Duelo de Afters',
+    participaciones: 6,
+    elo: 1690,
+  },
+  {
+    id: 4,
+    jugador: 'defensa_cero',
+    torneo: 'Copa Continental 2026',
+    participaciones: 5,
+    elo: 1580,
+  },
 ];
 
 /** Barras del gráfico de barras (relleno). */

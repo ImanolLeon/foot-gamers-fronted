@@ -4,9 +4,7 @@ import { PitchMarkings } from './PitchMarkings';
 import { RegistroModal } from './RegistroModal';
 import { CTA_DETAILS } from '../data/content';
 
-
 export function CtaSection() {
-
   const [registroAbierto, setRegistroAbierto] = useState(false);
 
   return (
@@ -18,7 +16,6 @@ export function CtaSection() {
 
       <div className="container-page relative z-10 grid gap-14 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20 lg:py-28">
         <div>
-         
           <h2 className="mt-4 font-poster text-[clamp(52px,8vw,104px)] leading-[0.84] font-extrabold uppercase">
             El sábado
             <br />
@@ -26,13 +23,10 @@ export function CtaSection() {
           </h2>
 
           <p className="mt-6 max-w-[46ch] text-[16px] leading-[1.7] text-chalk/70">
-            Inscríbete antes del viernes a las 20:00. Se juega en una sola noche, con 16 equipos y
-            un campeón que se lleva algo más que el título.
+            Inscríbete antes del viernes a las 20:00. Se juega en una sola
+            noche, con 16 equipos y un campeón que se lleva algo más que el
+            título.
           </p>
-
-          
-
-  
         </div>
 
         <dl className="">
@@ -50,7 +44,10 @@ export function CtaSection() {
         </dl>
       </div>
 
-      <RegistroModal open={registroAbierto} onClose={() => setRegistroAbierto(false)} />
+      <RegistroModal
+        open={registroAbierto}
+        onClose={() => setRegistroAbierto(false)}
+      />
     </section>
   );
 }

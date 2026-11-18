@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 import {
   actualizarPerfilRequest,
   cambiarContrasenaRequest,
@@ -13,7 +19,13 @@ import {
   type Usuario,
 } from '../lib/auth';
 import { ApiError } from '../lib/api';
-import { clearSession, isExpired, msRestantes, readSession, type Session } from '../lib/token';
+import {
+  clearSession,
+  isExpired,
+  msRestantes,
+  readSession,
+  type Session,
+} from '../lib/token';
 import { AuthContext } from './authContext';
 
 /**
@@ -104,23 +116,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const actualizarPerfil = useCallback(async (datos: ActualizarPerfilRequest) => {
-    const nueva = await actualizarPerfilRequest(datos);
-    setSession(nueva);
-    setUsuario(await fetchCurrentUser());
-  }, []);
+  const actualizarPerfil = useCallback(
+    async (datos: ActualizarPerfilRequest) => {
+      const nueva = await actualizarPerfilRequest(datos);
+      setSession(nueva);
+      setUsuario(await fetchCurrentUser());
+    },
+    [],
+  );
 
   const subirAvatar = useCallback(
     async (archivo: File) => {
       if (!usuario) throw new Error('No hay sesión activa.');
       setUsuario(await subirAvatarRequest(usuario.id, archivo));
     },
-    [usuario]
+    [usuario],
   );
 
-  const cambiarContrasena = useCallback(async (datos: CambiarContrasenaRequest) => {
-    await cambiarContrasenaRequest(datos);
-  }, []);
+  const cambiarContrasena = useCallback(
+    async (datos: CambiarContrasenaRequest) => {
+      await cambiarContrasenaRequest(datos);
+    },
+    [],
+  );
 
   const logout = useCallback(() => {
     clearSession();
@@ -153,7 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       subirAvatar,
       cambiarContrasena,
       logout,
-    ]
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

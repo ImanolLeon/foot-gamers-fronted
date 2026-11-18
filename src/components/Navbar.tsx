@@ -50,11 +50,17 @@ export function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-100 h-[var(--nav-h)]  transition-colors duration-300 ease-out ${
-          scrolled ? 'border-pitch/20 bg-paper/95 backdrop-blur-md' : 'border-pitch/10 bg-paper'
+          scrolled
+            ? 'border-pitch/20 bg-paper/95 backdrop-blur-md'
+            : 'border-pitch/10 bg-paper'
         }`}
       >
         <div className="container-page flex h-full items-center justify-between gap-6">
-          <a href="#inicio" className="flex-none" aria-label="Foot Gamer's, ir al inicio">
+          <a
+            href="#inicio"
+            className="flex-none"
+            aria-label="Foot Gamer's, ir al inicio"
+          >
             {brand}
           </a>
 
@@ -69,13 +75,17 @@ export function Navbar() {
                       href={link.href}
                       aria-current={isActive ? 'page' : undefined}
                       className={`group relative block py-2 text-sm font-medium transition-colors duration-200 ${
-                        isActive ? 'text-magenta' : 'text-pitch/70 hover:text-pitch'
+                        isActive
+                          ? 'text-magenta'
+                          : 'text-pitch/70 hover:text-pitch'
                       }`}
                     >
                       {link.label}
                       <span
                         className={`absolute inset-x-0 -bottom-px h-0.5 transition-colors duration-200 ${
-                          isActive ? 'bg-magenta' : 'bg-transparent group-hover:bg-pitch/30'
+                          isActive
+                            ? 'bg-magenta'
+                            : 'bg-transparent group-hover:bg-pitch/30'
                         }`}
                         aria-hidden="true"
                       />
@@ -100,7 +110,9 @@ export function Navbar() {
                   >
                     {session?.username.charAt(0).toUpperCase()}
                   </span>
-                  <span className="text-sm font-semibold">{session?.username}</span>
+                  <span className="text-sm font-semibold">
+                    {session?.username}
+                  </span>
                   <span className="text-[11px] text-pitch/70">
                     {esAdmin ? 'Admin' : 'Jugador'}
                   </span>
@@ -140,7 +152,9 @@ export function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="nav-mobile"
-            aria-label={open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+            aria-label={
+              open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
+            }
             className="grid size-10 place-items-center rounded-[2px] border border-pitch/25 transition-colors hover:border-magenta hover:text-magenta lg:hidden"
           >
             <span className="flex flex-col gap-1">
@@ -168,13 +182,18 @@ export function Navbar() {
       <div
         id="nav-mobile"
         className={`fixed inset-x-0 top-[var(--nav-h)] z-99 border-b border-pitch/20 bg-paper px-5 pb-6 backdrop-blur-md transition duration-300 ease-out lg:hidden ${
-          open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-3 opacity-0'
+          open
+            ? 'visible translate-y-0 opacity-100'
+            : 'invisible -translate-y-3 opacity-0'
         }`}
       >
         <nav aria-label="Navegación móvil">
           <ul>
             {NAV_LINKS.map((link, i) => (
-              <li key={link.href} className={i > 0 ? 'border-t border-pitch/15' : ''}>
+              <li
+                key={link.href}
+                className={i > 0 ? 'border-t border-pitch/15' : ''}
+              >
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
@@ -196,7 +215,9 @@ export function Navbar() {
                 >
                   {session?.username.charAt(0).toUpperCase()}
                 </span>
-                <span className="text-sm font-semibold">{session?.username}</span>
+                <span className="text-sm font-semibold">
+                  {session?.username}
+                </span>
                 <span className="ml-auto text-[11px] text-magenta">
                   {esAdmin ? 'Admin' : 'Jugador'}
                 </span>
@@ -223,7 +244,11 @@ export function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login" onClick={() => setOpen(false)} className="l-btn l-btn-outline w-full">
+              <Link
+                to="/login"
+                onClick={() => setOpen(false)}
+                className="l-btn l-btn-outline w-full"
+              >
                 Entrar
               </Link>
               <button
@@ -241,7 +266,10 @@ export function Navbar() {
         </div>
       </div>
 
-      <RegistroModal open={registroAbierto} onClose={() => setRegistroAbierto(false)} />
+      <RegistroModal
+        open={registroAbierto}
+        onClose={() => setRegistroAbierto(false)}
+      />
     </>
   );
 }

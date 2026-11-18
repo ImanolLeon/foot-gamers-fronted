@@ -69,7 +69,9 @@ function construirSesion(data: LoginResponse): Session {
   return session;
 }
 
-export async function loginRequest(credentials: LoginRequest): Promise<Session> {
+export async function loginRequest(
+  credentials: LoginRequest,
+): Promise<Session> {
   const data = await request<LoginResponse>('/auth/login', {
     method: 'POST',
     body: JSON.stringify(credentials),
@@ -78,7 +80,9 @@ export async function loginRequest(credentials: LoginRequest): Promise<Session> 
 }
 
 /** Alta de cuenta local: el backend siempre crea un JUGADOR y devuelve el token. */
-export async function registroRequest(datos: RegistroRequest): Promise<Session> {
+export async function registroRequest(
+  datos: RegistroRequest,
+): Promise<Session> {
   const data = await request<LoginResponse>('/auth/register', {
     method: 'POST',
     body: JSON.stringify(datos),
@@ -105,7 +109,9 @@ export type CambiarContrasenaRequest = {
 };
 
 /** Edita username/email y devuelve la sesión con el token renovado. */
-export async function actualizarPerfilRequest(datos: ActualizarPerfilRequest): Promise<Session> {
+export async function actualizarPerfilRequest(
+  datos: ActualizarPerfilRequest,
+): Promise<Session> {
   const data = await request<LoginResponse>('/auth/me', {
     method: 'PUT',
     body: JSON.stringify(datos),
@@ -114,7 +120,9 @@ export async function actualizarPerfilRequest(datos: ActualizarPerfilRequest): P
 }
 
 /** Cambia la contraseña del propio usuario. */
-export function cambiarContrasenaRequest(datos: CambiarContrasenaRequest): Promise<void> {
+export function cambiarContrasenaRequest(
+  datos: CambiarContrasenaRequest,
+): Promise<void> {
   return request<void>('/auth/me/contrasena', {
     method: 'PUT',
     body: JSON.stringify(datos),
@@ -122,10 +130,16 @@ export function cambiarContrasenaRequest(datos: CambiarContrasenaRequest): Promi
 }
 
 /** Sube la foto de perfil y devuelve el usuario actualizado. */
-export function subirAvatarRequest(id: number, archivo: File): Promise<Usuario> {
+export function subirAvatarRequest(
+  id: number,
+  archivo: File,
+): Promise<Usuario> {
   const form = new FormData();
   form.append('archivo', archivo);
-  return request<Usuario>(`/usuarios/${id}/imagen`, { method: 'PUT', body: form });
+  return request<Usuario>(`/usuarios/${id}/imagen`, {
+    method: 'PUT',
+    body: form,
+  });
 }
 
 /** Traduce un error del backend al mensaje que verá el usuario. */

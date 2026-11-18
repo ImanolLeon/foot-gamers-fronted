@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { inicioDeSesion } from '../lib/auth';
-import { decodeJwtPayload, saveSession, type Rol, type Session } from '../lib/token';
+import {
+  decodeJwtPayload,
+  saveSession,
+  type Rol,
+  type Session,
+} from '../lib/token';
 
 /**
  * Retorno del login OAuth2 del backend: `{FRONTEND_URL}/auth/callback?token=<jwt>`.
@@ -18,7 +23,9 @@ export function AuthCallback() {
     const payload = token ? decodeJwtPayload(token) : null;
 
     const rol: Rol | null =
-      payload?.rol === 'ADMINISTRADOR' || payload?.rol === 'JUGADOR' ? payload.rol : null;
+      payload?.rol === 'ADMINISTRADOR' || payload?.rol === 'JUGADOR'
+        ? payload.rol
+        : null;
 
     if (!token || !payload?.sub || !rol) {
       window.location.replace('/login');
@@ -29,7 +36,10 @@ export function AuthCallback() {
       token,
       username: payload.sub,
       rol,
-      expiraEn: typeof payload.exp === 'number' ? payload.exp * 1000 : Date.now() + 3_600_000,
+      expiraEn:
+        typeof payload.exp === 'number'
+          ? payload.exp * 1000
+          : Date.now() + 3_600_000,
     };
     saveSession(session);
 

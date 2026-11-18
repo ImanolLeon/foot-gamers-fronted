@@ -31,8 +31,8 @@ export function Footer() {
             </a>
 
             <p className="mt-5 max-w-[38ch] text-sm leading-[1.7] text-chalk/60">
-              Una comunidad de PES 2021 que se toma los torneos en serio y la diversión todavía
-              más en serio.
+              Una comunidad de PES 2021 que se toma los torneos en serio y la
+              diversión todavía más en serio.
             </p>
 
             <div className="mt-6 flex gap-2.5">
@@ -53,7 +53,9 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {FOOTER_COLUMNS.map((column) => (
               <nav key={column.title} aria-label={column.title}>
-                <h3 className="mb-4 text-sm font-semibold text-chalk">{column.title}</h3>
+                <h3 className="mb-4 text-sm font-semibold text-chalk">
+                  {column.title}
+                </h3>
                 <ul className="grid gap-3">
                   {column.links.map((link) => (
                     <li key={link.label}>
@@ -75,7 +77,8 @@ export function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-chalk/15 py-6 text-xs text-chalk/55 max-sm:flex-col max-sm:items-start">
           <span>© 2026 Foot Gamer&apos;s. Todos los derechos reservados.</span>
           <span>
-            PES y eFootball son marcas de Konami Digital Entertainment. Hecho por la comunidad.
+            PES y eFootball son marcas de Konami Digital Entertainment. Hecho
+            por la comunidad.
           </span>
         </div>
       </div>

@@ -2,15 +2,18 @@ import { FEATURES } from '../data/content';
 
 export function Features() {
   return (
-    <section id="juego" className="border-t border-pitch/15 bg-paper py-20 lg:py-28">
+    <section
+      id="juego"
+      className="border-t border-pitch/15 bg-paper py-20 lg:py-28"
+    >
       <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div className="self-start lg:sticky lg:top-28">
           <h2 className="max-w-[13ch] font-poster text-[clamp(44px,6vw,76px)] leading-[0.86] font-extrabold text-pitch uppercase">
             Lo que pasa cuando entras
           </h2>
           <p className="mt-6 max-w-[40ch] text-[16px] leading-[1.65] text-pitch/75">
-            No es solo jugar. Es tener con quién, cuándo y por qué. Cuatro cosas que ya están
-            montadas para que solo tengas que elegir equipo.
+            No es solo jugar. Es tener con quién, cuándo y por qué. Cuatro cosas
+            que ya están montadas para que solo tengas que elegir equipo.
           </p>
         </div>
 

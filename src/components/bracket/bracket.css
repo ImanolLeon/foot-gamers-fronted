@@ -1,0 +1,193 @@
+.knockout {
+  background: #0d0e10;
+  color: #f4f0e7;
+  border: 1px solid #725a25;
+  border-radius: 18px;
+  padding: 24px 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.knockout header {
+  text-align: center;
+  padding: 0 24px;
+}
+.knockout header > p:first-child {
+  font-size: 10px;
+  letter-spacing: 0.23em;
+  color: #b7a575;
+}
+.knockout h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  color: #e2b24e;
+  margin: 8px 0;
+}
+.knockout header > p:last-child {
+  color: #c0b497;
+  font-size: 13px;
+  max-width: 740px;
+  margin: 0 auto;
+}
+.knockout > p,
+.knockout > .live-notice {
+  margin: 16px 24px;
+}
+.knockout-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-color: #9b7833 #171719;
+  padding-bottom: 14px;
+}
+.knockout-scroll:focus-visible {
+  outline: 2px solid #e2b24e;
+  outline-offset: -3px;
+}
+.knockout-board {
+  position: relative;
+  width: 1480px;
+  height: 850px;
+  margin: auto;
+}
+.knockout-round {
+  position: absolute;
+  top: 24px;
+  width: 180px;
+  text-align: center;
+  color: #e2b24e;
+  font-size: 12px;
+  letter-spacing: 0.13em;
+}
+.knockout-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.knockout-lines path {
+  stroke: #947428;
+  stroke-width: 1.2;
+  fill: none;
+}
+.knockout-match {
+  position: absolute;
+  width: 180px;
+  height: 88px;
+  border: 1px solid #98742b;
+  border-radius: 10px;
+  background: #19191b;
+  z-index: 1;
+}
+.knockout-match button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 43px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: #f3eee3;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+.knockout-match button:first-child {
+  border-bottom: 1px solid #796027;
+  border-radius: 9px 9px 0 0;
+}
+.knockout-match button:nth-child(2) {
+  border-radius: 0 0 9px 9px;
+}
+.knockout-match button:disabled {
+  cursor: default;
+  color: #c8bfae;
+}
+.knockout-match button:not(:disabled):hover {
+  background: #513e19;
+}
+.knockout-match button.is-winner {
+  background: #493719;
+  color: #ffda80;
+  font-weight: 800;
+}
+.knockout-match button:focus-visible {
+  outline: 2px solid #ffe09b;
+  outline-offset: 2px;
+}
+.knockout-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 24px;
+  height: 24px;
+  background: #856628;
+  color: #fff2cf;
+  border-radius: 50%;
+  font-size: 10px;
+}
+.knockout-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.live-page .knockout-match-link {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: #c9b278;
+  text-decoration: none;
+  margin-top: 7px;
+}
+.knockout-trophy {
+  position: absolute;
+  left: 650px;
+  top: 270px;
+  width: 180px;
+  text-align: center;
+  font-size: 58px;
+}
+.knockout-champion {
+  position: absolute;
+  left: 630px;
+  top: 490px;
+  width: 220px;
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  color: #f4ce79;
+}
+.knockout-champion span {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+.knockout-champion strong {
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+.knockout-scroll-hint {
+  font-size: 11px;
+  text-align: center;
+  color: #b9ac8d;
+}
+.knockout-empty {
+  text-align: center;
+  padding: 30px;
+}
+.knockout-message {
+  color: #ffe09b;
+  font-size: 13px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .knockout-match button {
+    transition: background 0.15s;
+  }
+}
+
+.live-page .knockout a.knockout-match-link {
+  color: #d7bd7e;
+  text-decoration: none;
+}
+.live-page .knockout a.knockout-match-link:hover {
+  color: #ffe4a5;
+  text-decoration: underline;
+}

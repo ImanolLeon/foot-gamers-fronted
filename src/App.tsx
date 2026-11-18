@@ -1,3 +1,10 @@
+import { PanelSection } from './pages/panel/PanelPages';
+import {
+  TorneoDetail,
+  PartidoDetail,
+  ClassificationPage,
+  PlayerDetail,
+} from './pages/panel/DetailPages';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
@@ -5,10 +12,6 @@ import { AuthCallback } from './pages/AuthCallback';
 import { NotFound } from './pages/NotFound';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { JugadorLayout } from './components/jugador/JugadorLayout';
-import { AdminDashboard } from './pages/admin/AdminDashboard';
-import { AdminPlaceholder } from './pages/admin/AdminPlaceholder';
-import { JugadorDashboard } from './pages/jugador/JugadorDashboard';
-import { JugadorPlaceholder } from './pages/jugador/JugadorPlaceholder';
 import { RequireAuth, RequireRole } from './components/RouteGuards';
 import { inicioDeSesion } from './lib/auth';
 import { useAuth } from './hooks/useAuth';
@@ -48,28 +51,39 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route element={<RequireRole rol="ADMINISTRADOR" />}>
             <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="torneos" element={<AdminPlaceholder />} />
-              <Route path="partidos" element={<AdminPlaceholder />} />
-              <Route path="jugadores" element={<AdminPlaceholder />} />
-              <Route path="bandos" element={<AdminPlaceholder />} />
-              <Route path="grupos" element={<AdminPlaceholder />} />
-              <Route path="categorias" element={<AdminPlaceholder />} />
-              <Route path="trofeos" element={<AdminPlaceholder />} />
-              <Route path="usuarios" element={<AdminPlaceholder />} />
-              <Route path="ajustes" element={<AdminPlaceholder />} />
+              <Route path="disponibles" element={<PanelSection />} />
+              <Route path="mis-torneos" element={<PanelSection />} />
+              <Route path="mis-partidos" element={<PanelSection />} />
+              <Route path="mis-trofeos" element={<PanelSection />} />
+              <Route path="participaciones" element={<PanelSection />} />
+              <Route path="clasificacion" element={<ClassificationPage />} />
+              <Route path="jugadores/:id" element={<PlayerDetail />} />
+              <Route path="torneos/:id" element={<TorneoDetail />} />
+              <Route path="partidos/:id" element={<PartidoDetail />} />
+              <Route index element={<PanelSection />} />
+              <Route path="torneos" element={<PanelSection />} />
+              <Route path="partidos" element={<PanelSection />} />
+              <Route path="jugadores" element={<PanelSection />} />
+              <Route path="bandos" element={<PanelSection />} />
+              <Route path="grupos" element={<ClassificationPage />} />
+              <Route path="categorias" element={<PanelSection />} />
+              <Route path="trofeos" element={<PanelSection />} />
+              <Route path="usuarios" element={<PanelSection />} />
+              <Route path="ajustes" element={<PanelSection />} />
             </Route>
           </Route>
 
           <Route element={<RequireRole rol="JUGADOR" />}>
             <Route path="/jugador" element={<JugadorLayout />}>
-              <Route index element={<JugadorDashboard />} />
-              <Route path="torneos" element={<JugadorPlaceholder />} />
-              <Route path="partidos" element={<JugadorPlaceholder />} />
-              <Route path="mis-torneos" element={<JugadorPlaceholder />} />
-              <Route path="clasificacion" element={<JugadorPlaceholder />} />
-              <Route path="trofeos" element={<JugadorPlaceholder />} />
-              <Route path="perfil" element={<JugadorPlaceholder />} />
+              <Route path="torneos/:id" element={<TorneoDetail />} />
+              <Route path="partidos/:id" element={<PartidoDetail />} />
+              <Route index element={<PanelSection />} />
+              <Route path="torneos" element={<PanelSection />} />
+              <Route path="partidos" element={<PanelSection />} />
+              <Route path="mis-torneos" element={<PanelSection />} />
+              <Route path="clasificacion" element={<ClassificationPage />} />
+              <Route path="trofeos" element={<PanelSection />} />
+              <Route path="perfil" element={<PanelSection />} />
             </Route>
           </Route>
         </Route>

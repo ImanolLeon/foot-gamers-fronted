@@ -16,7 +16,7 @@ import {
 } from '../components/Icons';
 import { useAuth } from '../hooks/useAuth';
 import { ApiError } from '../lib/api';
-import {  inicioDeSesion } from '../lib/auth';
+import { inicioDeSesion } from '../lib/auth';
 
 /* ============================================================
    VALIDACIÓN
@@ -36,7 +36,8 @@ function validate(values: FormValues): FieldErrors {
   if (!values.username.trim()) {
     errors.username = 'El usuario es obligatorio.';
   } else if (!/^[a-zA-Z0-9._-]{3,}$/.test(values.username.trim())) {
-    errors.username = 'El usuario solo admite letras, números, punto, guion y guion bajo.';
+    errors.username =
+      'El usuario solo admite letras, números, punto, guion y guion bajo.';
   }
 
   if (!values.contrasena) {
@@ -91,7 +92,8 @@ export function Login() {
   const update = <K extends keyof FormValues>(key: K, value: FormValues[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
     if (key === 'username') setErrors((p) => ({ ...p, username: undefined }));
-    if (key === 'contrasena') setErrors((p) => ({ ...p, contrasena: undefined }));
+    if (key === 'contrasena')
+      setErrors((p) => ({ ...p, contrasena: undefined }));
     setFormError(null);
     if (oauthError) setSearchParams({}, { replace: true });
   };
@@ -109,7 +111,11 @@ export function Login() {
     const found = validate(values);
     setErrors(found);
     if (found.username || found.contrasena) {
-      document.getElementById(found.username ? `${uid}-username` : `${uid}-contrasena`)?.focus();
+      document
+        .getElementById(
+          found.username ? `${uid}-username` : `${uid}-contrasena`,
+        )
+        ?.focus();
       return;
     }
 
@@ -124,14 +130,13 @@ export function Login() {
       // El backend responde ProblemDetail (RFC 7807) en 401/400.
       if (error instanceof ApiError) {
         setFormError(error.message);
-        if (Object.keys(error.errores).length > 0) setErrors({ ...error.errores });
+        if (Object.keys(error.errores).length > 0)
+          setErrors({ ...error.errores });
       } else {
         setFormError('No se pudo iniciar sesión.');
       }
     }
   };
-
-  
 
   return (
     <div className="landing grid min-h-screen bg-paper lg:grid-cols-2">
@@ -139,7 +144,6 @@ export function Login() {
           PANEL DE MARCA
       ============================================================ */}
       <aside className="relative hidden overflow-hidden bg-pitch-deep p-12 text-chalk lg:flex lg:flex-col lg:justify-between xl:p-16">
-        
         <div className="absolute inset-x-0 top-0 h-1" aria-hidden="true" />
 
         <Link
@@ -159,15 +163,14 @@ export function Login() {
         </Link>
 
         <div className="relative max-w-md">
-         
           <h2 className="font-poster text-[clamp(46px,5vw,74px)] leading-[0.86] font-extrabold uppercase">
             Tu equipo
             <br />
             te está esperando
           </h2>
           <p className="mt-6 max-w-[42ch] text-base leading-[1.7] text-chalk/65">
-            Entra para disputar la próxima jornada, seguir tu ranking y defender tu puesto en la
-            tabla de campeones.
+            Entra para disputar la próxima jornada, seguir tu ranking y defender
+            tu puesto en la tabla de campeones.
           </p>
 
           <dl className="mt-9 flex gap-6  pt-6">
@@ -186,16 +189,16 @@ export function Login() {
               </div>
             ))}
           </dl>
-
-          
         </div>
-
       </aside>
 
       {/* ============================================================
           FORMULARIO
       ============================================================ */}
-      <main id="contenido" className="flex items-center justify-center px-5 py-12 sm:px-8 lg:py-16">
+      <main
+        id="contenido"
+        className="flex items-center justify-center px-5 py-12 sm:px-8 lg:py-16"
+      >
         <div className="w-full max-w-[440px]">
           {/* Marca en móvil */}
           <Link
@@ -222,11 +225,9 @@ export function Login() {
             Volver al inicio
           </Link>
 
-          
           <h1 className="font-poster text-[clamp(42px,6vw,58px)] leading-[0.88] font-extrabold text-pitch uppercase">
             Iniciar sesión
           </h1>
-          
 
           {/* Login social */}
           <div className="mt-8 grid gap-2.5">
@@ -249,7 +250,9 @@ export function Login() {
               </button>
               <button
                 type="button"
-                onClick={() => setNotice('El acceso con Steam llegará muy pronto.')}
+                onClick={() =>
+                  setNotice('El acceso con Steam llegará muy pronto.')
+                }
                 className="l-btn l-btn-outline px-3"
               >
                 <Gamepad className="size-[18px]" />
@@ -259,9 +262,7 @@ export function Login() {
           </div>
 
           {/* Separador */}
-          <div className="my-7 flex items-center gap-4">
-           
-          </div>
+          <div className="my-7 flex items-center gap-4"></div>
 
           {notice ? (
             <p
@@ -318,10 +319,16 @@ export function Login() {
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-pressed={showPassword}
-                  aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  aria-label={
+                    showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'
+                  }
                   className="grid size-10 place-items-center rounded-[2px] text-pitch/45 transition-colors duration-200 hover:text-magenta"
                 >
-                  {showPassword ? <EyeOff className="size-[19px]" /> : <Eye className="size-[19px]" />}
+                  {showPassword ? (
+                    <EyeOff className="size-[19px]" />
+                  ) : (
+                    <Eye className="size-[19px]" />
+                  )}
                 </button>
               }
             />
@@ -341,7 +348,9 @@ export function Login() {
 
               <button
                 type="button"
-                onClick={() => setNotice('El enlace de recuperación se enviará por correo.')}
+                onClick={() =>
+                  setNotice('El enlace de recuperación se enviará por correo.')
+                }
                 className="text-sm font-semibold text-magenta underline decoration-magenta/30 decoration-2 underline-offset-[5px] transition-colors duration-200 hover:text-pitch hover:decoration-pitch"
               >
                 ¿Olvidaste tu contraseña?
@@ -397,7 +406,10 @@ export function Login() {
         </div>
       </main>
 
-      <RegistroModal open={registroAbierto} onClose={() => setRegistroAbierto(false)} />
+      <RegistroModal
+        open={registroAbierto}
+        onClose={() => setRegistroAbierto(false)}
+      />
     </div>
   );
 }

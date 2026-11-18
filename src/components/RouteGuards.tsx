@@ -20,7 +20,8 @@ export function RequireAuth() {
   const location = useLocation();
 
   if (hidratando) return <Cargando />;
-  if (!isAuthenticated) return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  if (!isAuthenticated)
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />;
 
   return <Outlet />;
 }

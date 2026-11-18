@@ -11,7 +11,7 @@ export function AdminLayout() {
       subtitulo="Panel admin"
       etiquetaGrupo="Gestión"
       IconoVerSitio={LayoutDashboard}
-      placeholderBusqueda="Buscar jugador, torneo…"
+      placeholderBusqueda="Buscar sección…"
       rolFallback="Administrador"
       notificaciones={3}
     />

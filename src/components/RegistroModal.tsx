@@ -36,7 +36,8 @@ function validate(values: FormValues): FieldErrors {
   if (!values.username.trim()) {
     errors.username = 'El usuario es obligatorio.';
   } else if (!/^[a-zA-Z0-9._-]{3,}$/.test(values.username.trim())) {
-    errors.username = 'Solo letras, números, punto, guion y guion bajo (mínimo 3).';
+    errors.username =
+      'Solo letras, números, punto, guion y guion bajo (mínimo 3).';
   }
 
   if (!values.email.trim()) {
@@ -73,7 +74,13 @@ const VALORES_INICIALES: FormValues = {
  * El modal solo renderiza su contenido cuando está abierto. Así el formulario
  * se monta limpio en cada apertura (sin resetear estado desde un efecto).
  */
-export function RegistroModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function RegistroModal({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   if (!open) return null;
   return <ContenidoModal onClose={onClose} />;
 }
@@ -90,7 +97,10 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
 
   // Enfoca el primer campo al montar el modal.
   useEffect(() => {
-    const timer = setTimeout(() => document.getElementById(`${uid}-username`)?.focus(), 30);
+    const timer = setTimeout(
+      () => document.getElementById(`${uid}-username`)?.focus(),
+      30,
+    );
     return () => clearTimeout(timer);
   }, [uid]);
 
@@ -137,7 +147,8 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
     } catch (error) {
       if (error instanceof ApiError) {
         setFormError(error.message);
-        if (Object.keys(error.errores).length > 0) setErrors({ ...error.errores });
+        if (Object.keys(error.errores).length > 0)
+          setErrors({ ...error.errores });
       } else {
         setFormError('No se pudo crear la cuenta.');
       }
@@ -152,7 +163,11 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
       aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
       className="grid size-10 place-items-center rounded-[2px] text-pitch/45 transition-colors duration-200 hover:text-magenta"
     >
-      {showPassword ? <EyeOff className="size-[19px]" /> : <Eye className="size-[19px]" />}
+      {showPassword ? (
+        <EyeOff className="size-[19px]" />
+      ) : (
+        <Eye className="size-[19px]" />
+      )}
     </button>
   );
 
@@ -169,7 +184,10 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
         aria-labelledby={`${uid}-titulo`}
         className="relative max-h-[92vh] w-full max-w-[460px] overflow-y-auto rounded-[3px] border border-pitch/25 bg-paper p-6 text-pitch shadow-[0_24px_70px_-24px_rgba(5,32,24,0.6)] sm:p-8"
       >
-        <span className="absolute inset-x-0 top-0 h-1 bg-magenta" aria-hidden="true" />
+        <span
+          className="absolute inset-x-0 top-0 h-1 bg-magenta"
+          aria-hidden="true"
+        />
 
         <button
           type="button"
@@ -263,7 +281,10 @@ function ContenidoModal({ onClose }: { onClose: () => void }) {
             tone="light"
           />
 
-          <div className="mt-1 border-t border-dashed border-pitch/20" aria-hidden="true" />
+          <div
+            className="mt-1 border-t border-dashed border-pitch/20"
+            aria-hidden="true"
+          />
 
           <button
             type="submit"

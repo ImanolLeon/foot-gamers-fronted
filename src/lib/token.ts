@@ -24,7 +24,8 @@ const STORAGE_KEY = 'fg:session';
    ============================================================ */
 
 export function readSession(): Session | null {
-  const raw = localStorage.getItem(STORAGE_KEY) ?? sessionStorage.getItem(STORAGE_KEY);
+  const raw =
+    localStorage.getItem(STORAGE_KEY) ?? sessionStorage.getItem(STORAGE_KEY);
   if (!raw) return null;
   try {
     return JSON.parse(raw) as Session;

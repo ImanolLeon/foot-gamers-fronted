@@ -44,7 +44,10 @@ export function JugadorDashboard() {
       <section className="panel-surface overflow-hidden p-6">
         <div className="flex flex-wrap items-center justify-between gap-5">
           <div className="flex items-center gap-4">
-            <span className="panel-badge size-14 flex-none rounded-2xl" aria-hidden="true">
+            <span
+              className="panel-badge size-14 flex-none rounded-2xl"
+              aria-hidden="true"
+            >
               <Bolt className="size-7" />
             </span>
             <div>
@@ -52,8 +55,8 @@ export function JugadorDashboard() {
                 Hola, {session?.username}
               </h2>
               <p className="text-sm text-ink-2">
-                Vas <strong className="font-bold text-magenta">2.º</strong> en la Liga
-                Sabanalera con 20 puntos.
+                Vas <strong className="font-bold text-magenta">2.º</strong> en
+                la Liga Sabanalera con 20 puntos.
               </p>
             </div>
           </div>
@@ -72,9 +75,15 @@ export function JugadorDashboard() {
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {JUGADOR_STATS.map((stat) => (
-            <article key={stat.label} className="panel-surface p-5 hover:-translate-y-0.5">
+            <article
+              key={stat.label}
+              className="panel-surface p-5 hover:-translate-y-0.5"
+            >
               <div className="flex items-start justify-between gap-3">
-                <span className="panel-badge size-11 rounded-xl" aria-hidden="true">
+                <span
+                  className="panel-badge size-11 rounded-xl"
+                  aria-hidden="true"
+                >
                   <stat.Icon className="size-5" />
                 </span>
                 <span className="panel-chip">
@@ -83,7 +92,9 @@ export function JugadorDashboard() {
                 </span>
               </div>
 
-              <p className="mt-5 font-display text-[32px] leading-none font-black">{stat.valor}</p>
+              <p className="mt-5 font-display text-[32px] leading-none font-black">
+                {stat.valor}
+              </p>
               <p className="mt-1.5 text-sm text-ink-2">{stat.label}</p>
             </article>
           ))}
@@ -93,20 +104,28 @@ export function JugadorDashboard() {
       {/* ---------- Rendimiento + próximos partidos ---------- */}
       <div className="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
         {/* Gráfico de barras decorativo */}
-        <section aria-labelledby="rendimiento" className="panel-surface-flat p-6">
+        <section
+          aria-labelledby="rendimiento"
+          className="panel-surface-flat p-6"
+        >
           <header className="mb-7 flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 id="rendimiento" className="font-display text-lg font-bold">
                 Mis victorias por mes
               </h2>
-              <p className="text-xs text-ink-3">Datos de relleno · últimos 7 meses</p>
+              <p className="text-xs text-ink-3">
+                Datos de relleno · últimos 7 meses
+              </p>
             </div>
             <span className="panel-chip">23 victorias</span>
           </header>
 
           <div className="flex h-[180px] items-end gap-2.5 sm:gap-4">
             {JUGADOR_GRAFICO.map((barra) => (
-              <div key={barra.mes} className="group flex flex-1 flex-col items-center gap-2">
+              <div
+                key={barra.mes}
+                className="group flex flex-1 flex-col items-center gap-2"
+              >
                 <div className="relative flex w-full flex-1 items-end">
                   <div
                     className="w-full rounded-t-md bg-gradient-to-t from-magenta/25 to-magenta/60 transition duration-300 ease-out group-hover:from-magenta/40 group-hover:to-magenta"
@@ -116,7 +135,9 @@ export function JugadorDashboard() {
                     {barra.valor}
                   </span>
                 </div>
-                <span className="text-[11px] font-semibold text-ink-3">{barra.mes}</span>
+                <span className="text-[11px] font-semibold text-ink-3">
+                  {barra.mes}
+                </span>
               </div>
             ))}
           </div>
@@ -140,8 +161,13 @@ export function JugadorDashboard() {
           <ul className="grid gap-4">
             {JUGADOR_PARTIDOS.map((partido) => (
               <li key={partido.id} className="flex items-start gap-3">
-                <span className="panel-badge size-9 flex-none rounded-lg" aria-hidden="true">
-                  <span className="text-[11px] font-black">{partido.fase.charAt(0)}</span>
+                <span
+                  className="panel-badge size-9 flex-none rounded-lg"
+                  aria-hidden="true"
+                >
+                  <span className="text-[11px] font-black">
+                    {partido.fase.charAt(0)}
+                  </span>
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-bold">
@@ -164,13 +190,21 @@ export function JugadorDashboard() {
       </div>
 
       {/* ---------- Torneos abiertos ---------- */}
-      <section aria-labelledby="torneos-abiertos" className="panel-surface-flat overflow-hidden">
+      <section
+        aria-labelledby="torneos-abiertos"
+        className="panel-surface-flat overflow-hidden"
+      >
         <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5">
           <div>
-            <h2 id="torneos-abiertos" className="font-display text-lg font-bold">
+            <h2
+              id="torneos-abiertos"
+              className="font-display text-lg font-bold"
+            >
               Torneos abiertos
             </h2>
-            <p className="text-xs text-ink-3">Inscripciones disponibles · datos de relleno</p>
+            <p className="text-xs text-ink-3">
+              Inscripciones disponibles · datos de relleno
+            </p>
           </div>
           <Link to="/jugador/torneos" className="panel-btn btn-sm">
             Ver todos
@@ -179,7 +213,9 @@ export function JugadorDashboard() {
 
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-sm">
-            <caption className="sr-only">Torneos con inscripción abierta</caption>
+            <caption className="sr-only">
+              Torneos con inscripción abierta
+            </caption>
             <thead>
               <tr className="border-b border-line text-left text-[11px] tracking-[0.14em] text-ink-3 uppercase">
                 <th scope="col" className="px-6 py-3 font-bold">
@@ -209,7 +245,9 @@ export function JugadorDashboard() {
                     {torneo.nombre}
                   </th>
                   <td className="px-4 py-4 text-ink-2">{torneo.categoria}</td>
-                  <td className="px-4 py-4 text-ink-2 tabular-nums">{torneo.fechaInicio}</td>
+                  <td className="px-4 py-4 text-ink-2 tabular-nums">
+                    {torneo.fechaInicio}
+                  </td>
                   <td className="px-4 py-4 text-ink-2">
                     {torneo.inscritos}/{torneo.cantidadJugadores}
                   </td>

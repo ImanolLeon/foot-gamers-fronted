@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Bell, Crown, LogOut, Menu, Search } from '../Icons';
+import { Crown, LogOut, Menu, Search } from '../Icons';
 import { useAuth } from '../../hooks/useAuth';
 import { urlImagenUsuario } from '../../lib/api';
 import { PerfilModal } from './PerfilModal';
@@ -38,11 +38,17 @@ export function PanelLayout({
   IconoVerSitio,
   placeholderBusqueda,
   rolFallback,
-  notificaciones = 3,
 }: PanelLayoutProps) {
   const { session, usuario, logout } = useAuth();
   const { pathname } = useLocation();
-  const seccion = nav.find((item) => item.to === pathname) ?? nav[0];
+  const seccion =
+    nav.find((item) => item.to === pathname) ??
+    nav.find(
+      (item) => item.to !== raiz && pathname.startsWith(item.to + '/'),
+    ) ??
+    nav.find((item) => item.to === raiz) ??
+    nav[0];
+  const [busqueda, setBusqueda] = useState('');
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [perfilAbierto, setPerfilAbierto] = useState(false);
 
@@ -100,33 +106,39 @@ export function PanelLayout({
             {etiquetaGrupo}
           </p>
           <ul className="grid gap-0.5">
-            {nav.map((item) => (
-              <li key={item.to}>
-                <NavLink
-                  to={item.to}
-                  end={item.to === raiz}
-                  onClick={() => setMenuAbierto(false)}
-                  className={({ isActive }) =>
-                    `group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition duration-300 ease-out ${
-                      isActive
-                        ? 'bg-magenta/15 text-white shadow-[inset_2px_0_0_0_#c210a0]'
-                        : 'text-ink-2 hover:bg-white/4 hover:text-white'
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <item.Icon
-                        className={`size-[18px] flex-none transition-colors duration-300 ${
-                          isActive ? 'text-pink' : 'text-ink-3 group-hover:text-pink'
-                        }`}
-                      />
-                      {item.label}
-                    </>
-                  )}
-                </NavLink>
-              </li>
-            ))}
+            {nav
+              .filter((item) =>
+                item.label.toLowerCase().includes(busqueda.toLowerCase()),
+              )
+              .map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    end={item.to === raiz}
+                    onClick={() => setMenuAbierto(false)}
+                    className={({ isActive }) =>
+                      `group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition duration-300 ease-out ${
+                        isActive
+                          ? 'bg-magenta/15 text-white shadow-[inset_2px_0_0_0_#c210a0]'
+                          : 'text-ink-2 hover:bg-white/4 hover:text-white'
+                      }`
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <item.Icon
+                          className={`size-[18px] flex-none transition-colors duration-300 ${
+                            isActive
+                              ? 'text-pink'
+                              : 'text-ink-3 group-hover:text-pink'
+                          }`}
+                        />
+                        {item.label}
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
           </ul>
         </nav>
 
@@ -188,8 +200,12 @@ export function PanelLayout({
           </button>
 
           <div className="min-w-0 flex-1">
-            <h1 className="truncate font-display text-lg font-extrabold">{seccion.label}</h1>
-            <p className="hidden truncate text-xs text-ink-3 sm:block">{seccion.descripcion}</p>
+            <h1 className="truncate font-display text-lg font-extrabold">
+              {seccion.label}
+            </h1>
+            <p className="hidden truncate text-xs text-ink-3 sm:block">
+              {seccion.descripcion}
+            </p>
           </div>
 
           {/* Buscador (decorativo) */}
@@ -198,25 +214,12 @@ export function PanelLayout({
             <input
               type="search"
               placeholder={placeholderBusqueda}
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
               aria-label="Buscar"
               className="h-10 w-[240px] rounded-lg border border-line bg-surface pr-4 pl-10 text-sm text-ink placeholder:text-ink-3 transition duration-300 ease-out focus:border-magenta focus:outline-none"
             />
           </div>
-
-          {/* Notificaciones (decorativas) */}
-          <button
-            type="button"
-            aria-label={`Notificaciones: ${notificaciones} sin leer`}
-            className="relative grid size-10 flex-none place-items-center rounded-lg border border-line text-ink-2 transition duration-300 ease-out hover:border-magenta hover:text-magenta"
-          >
-            <Bell className="size-5" />
-            <span
-              className="absolute -top-1 -right-1 grid size-4.5 place-items-center rounded-full bg-magenta text-[10px] font-bold text-white"
-              aria-hidden="true"
-            >
-              {notificaciones}
-            </span>
-          </button>
 
           <Link
             to="/"
@@ -233,7 +236,10 @@ export function PanelLayout({
         </main>
       </div>
 
-      <PerfilModal open={perfilAbierto} onClose={() => setPerfilAbierto(false)} />
+      <PerfilModal
+        open={perfilAbierto}
+        onClose={() => setPerfilAbierto(false)}
+      />
     </div>
   );
 }

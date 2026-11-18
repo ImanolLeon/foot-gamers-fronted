@@ -21,9 +21,12 @@ export function NotFound() {
           404
         </p>
 
-        <h1 className="mt-2 font-display text-2xl font-extrabold">Esta jugada no existe</h1>
+        <h1 className="mt-2 font-display text-2xl font-extrabold">
+          Esta jugada no existe
+        </h1>
         <p className="mx-auto mt-3 max-w-md text-ink-2">
-          La página que buscas se fue fuera de campo. Vuelve al inicio y sigue jugando.
+          La página que buscas se fue fuera de campo. Vuelve al inicio y sigue
+          jugando.
         </p>
 
         <Link to="/" className="btn btn-primary btn-lg mt-9">

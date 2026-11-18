@@ -187,11 +187,56 @@ export type JugadorClasificacion = {
 };
 
 export const JUGADOR_CLASIFICACION: JugadorClasificacion[] = [
-  { grupo: 'A', username: 'goleador_94', jugados: 9, ganados: 7, empatados: 1, perdidos: 1, puntos: 22, yo: false },
-  { grupo: 'A', username: 'imanol', jugados: 9, ganados: 6, empatados: 2, perdidos: 1, puntos: 20, yo: true },
-  { grupo: 'A', username: 'mufa_hard', jugados: 9, ganados: 5, empatados: 1, perdidos: 3, puntos: 16, yo: false },
-  { grupo: 'A', username: 'tiro_libres', jugados: 9, ganados: 3, empatados: 2, perdidos: 4, puntos: 11, yo: false },
-  { grupo: 'A', username: 'defensa_cero', jugados: 9, ganados: 1, empatados: 2, perdidos: 6, puntos: 5, yo: false },
+  {
+    grupo: 'A',
+    username: 'goleador_94',
+    jugados: 9,
+    ganados: 7,
+    empatados: 1,
+    perdidos: 1,
+    puntos: 22,
+    yo: false,
+  },
+  {
+    grupo: 'A',
+    username: 'imanol',
+    jugados: 9,
+    ganados: 6,
+    empatados: 2,
+    perdidos: 1,
+    puntos: 20,
+    yo: true,
+  },
+  {
+    grupo: 'A',
+    username: 'mufa_hard',
+    jugados: 9,
+    ganados: 5,
+    empatados: 1,
+    perdidos: 3,
+    puntos: 16,
+    yo: false,
+  },
+  {
+    grupo: 'A',
+    username: 'tiro_libres',
+    jugados: 9,
+    ganados: 3,
+    empatados: 2,
+    perdidos: 4,
+    puntos: 11,
+    yo: false,
+  },
+  {
+    grupo: 'A',
+    username: 'defensa_cero',
+    jugados: 9,
+    ganados: 1,
+    empatados: 2,
+    perdidos: 6,
+    puntos: 5,
+    yo: false,
+  },
 ];
 
 /* ============================================================
@@ -207,9 +252,19 @@ export type JugadorTrofeo = {
 };
 
 export const JUGADOR_TROFEOS: JugadorTrofeo[] = [
-  { id: 1, nombre: 'Campeón', torneo: 'Mundialito de Clubes', fecha: '2026-09-12' },
+  {
+    id: 1,
+    nombre: 'Campeón',
+    torneo: 'Mundialito de Clubes',
+    fecha: '2026-09-12',
+  },
   { id: 2, nombre: 'Campeón', torneo: 'Duelo de Afters', fecha: '2026-03-20' },
-  { id: 3, nombre: 'Subcampeón', torneo: 'Copa Continental 2025', fecha: '2025-12-01' },
+  {
+    id: 3,
+    nombre: 'Subcampeón',
+    torneo: 'Copa Continental 2025',
+    fecha: '2025-12-01',
+  },
   { id: 4, nombre: 'Campeón', torneo: 'Torneo Relámpago', fecha: '2025-08-25' },
 ];
 

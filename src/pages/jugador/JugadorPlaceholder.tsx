@@ -24,9 +24,15 @@ function TablaRelleno({
       <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5">
         <div>
           <h2 className="font-display text-lg font-bold">{titulo}</h2>
-          <p className="text-xs text-ink-3">Datos de relleno · se conectará al backend</p>
+          <p className="text-xs text-ink-3">
+            Datos de relleno · se conectará al backend
+          </p>
         </div>
-        <button type="button" className="panel-btn btn-sm" aria-label="Acción pendiente">
+        <button
+          type="button"
+          className="panel-btn btn-sm"
+          aria-label="Acción pendiente"
+        >
           <Plus className="size-4" />
           Acción
         </button>
@@ -90,7 +96,9 @@ function tablaDeSeccion(pathname: string) {
           p.torneo,
           p.fase,
           p.fecha,
-          p.estado === 'FINALIZADO' ? `Finalizado ${p.resultado ?? ''}`.trim() : 'Programado',
+          p.estado === 'FINALIZADO'
+            ? `Finalizado ${p.resultado ?? ''}`.trim()
+            : 'Programado',
         ]),
       };
     case '/jugador/mis-torneos':
@@ -142,16 +150,27 @@ export function JugadorPlaceholder() {
   return (
     <div className="grid gap-6">
       <section className="panel-surface-flat p-8 text-center">
-        <span className="panel-badge mx-auto size-14 rounded-2xl" aria-hidden="true">
+        <span
+          className="panel-badge mx-auto size-14 rounded-2xl"
+          aria-hidden="true"
+        >
           {seccion && <seccion.Icon className="size-6" />}
         </span>
-        <h2 className="mt-5 font-display text-xl font-bold">{seccion?.label ?? 'Sección'}</h2>
-        <p className="mx-auto mt-2 max-w-md text-sm text-ink-2">{seccion?.descripcion}</p>
+        <h2 className="mt-5 font-display text-xl font-bold">
+          {seccion?.label ?? 'Sección'}
+        </h2>
+        <p className="mx-auto mt-2 max-w-md text-sm text-ink-2">
+          {seccion?.descripcion}
+        </p>
         <p className="panel-chip mt-5">Módulo en construcción</p>
       </section>
 
       {tabla ? (
-        <TablaRelleno titulo={tabla.titulo} columnas={tabla.columnas} filas={tabla.filas} />
+        <TablaRelleno
+          titulo={tabla.titulo}
+          columnas={tabla.columnas}
+          filas={tabla.filas}
+        />
       ) : null}
     </div>
   );

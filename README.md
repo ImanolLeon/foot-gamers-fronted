@@ -4,16 +4,16 @@ Interfaz web de FootGamer's para acceder a una comunidad de torneos y partidos, 
 
 ## Tecnologías
 
-| Componente | Tecnología |
-| --- | --- |
-| Interfaz | React 19 |
-| Lenguaje | TypeScript 6 |
-| Desarrollo y compilación | Vite 8 |
-| Rutas | React Router 7 |
-| Estilos | Tailwind CSS 4 |
-| Análisis estático | Oxlint |
-| Dependencias | pnpm |
-| Despliegue | Docker y Nginx |
+| Componente               | Tecnología     |
+| ------------------------ | -------------- |
+| Interfaz                 | React 19       |
+| Lenguaje                 | TypeScript 6   |
+| Desarrollo y compilación | Vite 8         |
+| Rutas                    | React Router 7 |
+| Estilos                  | Tailwind CSS 4 |
+| Análisis estático        | Oxlint         |
+| Dependencias             | pnpm           |
+| Despliegue               | Docker y Nginx |
 
 Las versiones declaradas están en [package.json](package.json); [pnpm-lock.yaml](pnpm-lock.yaml) fija las dependencias instaladas.
 
@@ -26,7 +26,7 @@ Las versiones declaradas están en [package.json](package.json); [pnpm-lock.yaml
 - Edición de perfil, cambio de contraseña y subida de avatar mediante el cliente de autenticación.
 - Layouts y dashboards para administrador y jugador.
 
-Los dashboards utilizan datos de ejemplo de `src/data/admin.ts` y `src/data/jugador.ts`. Las subsecciones de los paneles todavía muestran `AdminPlaceholder` o `JugadorPlaceholder`; su existencia en el menú no implica que los CRUD de torneos, partidos y otros recursos estén implementados.
+Los paneles consultan el backend autenticado: contadores, listados paginados, formularios y detalles de torneos y partidos. El administrador gestiona usuarios, jugadores, categorías, bandos, trofeos y participaciones; ambos roles consultan sus torneos, partidos y trofeos.
 
 ## Requisitos
 
@@ -62,10 +62,10 @@ VITE_API_URL=/api
 VITE_PROXY_TARGET=http://localhost:8080
 ```
 
-| Variable | Función |
-| --- | --- |
-| `VITE_API_URL` | Prefijo usado por las peticiones del cliente y el inicio del flujo OAuth2. |
-| `VITE_PROXY_TARGET` | Destino del proxy de Vite en desarrollo y vista previa. |
+| Variable            | Función                                                                    |
+| ------------------- | -------------------------------------------------------------------------- |
+| `VITE_API_URL`      | Prefijo usado por las peticiones del cliente y el inicio del flujo OAuth2. |
+| `VITE_PROXY_TARGET` | Destino del proxy de Vite en desarrollo y vista previa.                    |
 
 Con la configuración actual, conserva `VITE_API_URL=/api` para trabajar mediante el proxy. Reinicia Vite después de cambiar el entorno.
 
@@ -83,12 +83,12 @@ Abre la URL indicada por Vite, normalmente `http://localhost:5173`. Si el puerto
 
 ## Comandos disponibles
 
-| Comando | Función |
-| --- | --- |
-| `pnpm dev` | Iniciar Vite en desarrollo. |
-| `pnpm build` | Ejecutar TypeScript y generar la aplicación en `dist/`. |
-| `pnpm lint` | Analizar el código con Oxlint. |
-| `pnpm preview` | Servir una vista previa del build generado. |
+| Comando        | Función                                                 |
+| -------------- | ------------------------------------------------------- |
+| `pnpm dev`     | Iniciar Vite en desarrollo.                             |
+| `pnpm build`   | Ejecutar TypeScript y generar la aplicación en `dist/`. |
+| `pnpm lint`    | Analizar el código con Oxlint.                          |
+| `pnpm preview` | Servir una vista previa del build generado.             |
 
 Para comprobar el proyecto y visualizar el build:
 
@@ -110,30 +110,30 @@ Vite elimina el prefijo `/api`: una llamada a `/api/auth/login` llega a Spring B
 
 El cliente HTTP está en [src/lib/api.ts](src/lib/api.ts). Añade el token Bearer, permite formularios multipart y normaliza errores de la API. Las operaciones de autenticación y perfil están en [src/lib/auth.ts](src/lib/auth.ts).
 
-| Método | Ruta del backend | Uso |
-| --- | --- | --- |
-| POST | `/auth/login` | Iniciar sesión. |
-| POST | `/auth/register` | Registrar una cuenta de jugador. |
-| GET | `/auth/me` | Consultar el perfil. |
-| PUT | `/auth/me` | Actualizar nombre de usuario y correo. |
-| PUT | `/auth/me/contrasena` | Cambiar la contraseña. |
-| PUT | `/usuarios/{id}/imagen` | Subir avatar con el campo multipart `archivo`. |
-| GET | `/usuarios/{id}/imagen` | Mostrar el avatar. |
+| Método | Ruta del backend        | Uso                                            |
+| ------ | ----------------------- | ---------------------------------------------- |
+| POST   | `/auth/login`           | Iniciar sesión.                                |
+| POST   | `/auth/register`        | Registrar una cuenta de jugador.               |
+| GET    | `/auth/me`              | Consultar el perfil.                           |
+| PUT    | `/auth/me`              | Actualizar nombre de usuario y correo.         |
+| PUT    | `/auth/me/contrasena`   | Cambiar la contraseña.                         |
+| PUT    | `/usuarios/{id}/imagen` | Subir avatar con el campo multipart `archivo`. |
+| GET    | `/usuarios/{id}/imagen` | Mostrar el avatar.                             |
 
 ## Sesión y rutas
 
 La sesión se guarda en `localStorage` con la clave `fg:session`; la lectura también contempla `sessionStorage`. El frontend lee la expiración del JWT, mientras que el backend verifica su firma y autoriza las operaciones.
 
-| Ruta | Vista / acceso |
-| --- | --- |
-| `/` | Landing pública. |
-| `/login` | Inicio de sesión; redirige al panel si ya hay sesión. |
-| `/auth/callback` | Retorno del acceso OAuth2. |
-| `/admin` | Dashboard de `ADMINISTRADOR`. |
-| `/admin/*` | Secciones administrativas, actualmente provisionales. |
-| `/jugador` | Dashboard de `JUGADOR`. |
-| `/jugador/*` | Secciones del jugador, actualmente provisionales. |
-| Otras rutas | Página de recurso no encontrado. |
+| Ruta             | Vista / acceso                                        |
+| ---------------- | ----------------------------------------------------- |
+| `/`              | Landing pública.                                      |
+| `/login`         | Inicio de sesión; redirige al panel si ya hay sesión. |
+| `/auth/callback` | Retorno del acceso OAuth2.                            |
+| `/admin`         | Dashboard de `ADMINISTRADOR`.                         |
+| `/admin/*`       | Secciones administrativas, actualmente provisionales. |
+| `/jugador`       | Dashboard de `JUGADOR`.                               |
+| `/jugador/*`     | Secciones del jugador, actualmente provisionales.     |
+| Otras rutas      | Página de recurso no encontrado.                      |
 
 El enrutamiento se define en [src/App.tsx](src/App.tsx). Los controles del navegador no sustituyen los permisos del backend.
 
@@ -187,13 +187,45 @@ src/
 
 ## Problemas frecuentes
 
-| Síntoma | Qué revisar |
-| --- | --- |
-| No se puede conectar / error del proxy | Backend activo y `VITE_PROXY_TARGET` correcto. |
-| HTTP 401 | Sesión vencida o token inválido; vuelve a iniciar sesión. |
-| Acceso denegado a un panel | Rol de la cuenta y restricciones de la ruta. |
-| Error al instalar o compilar | Versión de Node compatible y dependencias instaladas con el lockfile. |
-| Cambios en `.env` sin efecto | Reiniciar Vite o reconstruir el build. |
-| Error 502 en Docker | Destino de Nginx y conectividad entre servicios. |
-| OAuth vuelve a una dirección incorrecta | `FRONTEND_URL`, callback del proveedor y URL externa del proxy. |
-| Métricas que no cambian | Los dashboards todavía utilizan datos de ejemplo. |
+| Síntoma                                 | Qué revisar                                                           |
+| --------------------------------------- | --------------------------------------------------------------------- |
+| No se puede conectar / error del proxy  | Backend activo y `VITE_PROXY_TARGET` correcto.                        |
+| HTTP 401                                | Sesión vencida o token inválido; vuelve a iniciar sesión.             |
+| Acceso denegado a un panel              | Rol de la cuenta y restricciones de la ruta.                          |
+| Error al instalar o compilar            | Versión de Node compatible y dependencias instaladas con el lockfile. |
+| Cambios en `.env` sin efecto            | Reiniciar Vite o reconstruir el build.                                |
+| Error 502 en Docker                     | Destino de Nginx y conectividad entre servicios.                      |
+| OAuth vuelve a una dirección incorrecta | `FRONTEND_URL`, callback del proveedor y URL externa del proxy.       |
+| Métricas que no cambian                 | Los dashboards todavía utilizan datos de ejemplo.                     |
+
+## Panel conectado al backend
+
+- Jugador: torneos abiertos e inscripción, mis torneos, mis partidos, clasificación por grupos, trofeos y perfil.
+- Administrador: CRUD de recursos, inscripción de jugadores, distribución de grupos (aleatoria, equilibrada o manual), generación de partidos y llaves, resultados, ganadores y campeón.
+- Los formularios muestran errores del servidor y evitan envíos duplicados. La paginación admite el formato `content` + `page` de Spring Boot.
+- El detalle consulta también `GET /torneos/{id}/participantes` y `GET /partidos/{id}/participaciones`; es necesario reiniciar el backend actualizado.
+
+### Validación de integración
+
+`tests/panel-api.mjs` recorre un torneo completo con cuentas sintéticas y verifica permisos de jugador. Ejecutarlo exclusivamente contra una instancia de pruebas en el puerto 8082 con un esquema PostgreSQL separado, nunca contra la base habitual. Configurar `SPRING_DATASOURCE_URL` con `currentSchema` y `SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_SCHEMA` al esquema de pruebas antes de iniciar esa instancia. Con el administrador inicial disponible, ejecutar en PowerShell:
+
+```powershell
+$env:PANEL_TEST_BASE_URL='http://localhost:8082'
+node tests/panel-api.mjs
+```
+
+La prueba crea datos sintéticos; eliminar únicamente su esquema aislado después de detener la instancia de pruebas.
+
+### Portadas de administrador y jugador
+
+La portada administrativa ofrece contadores reales, agenda de torneos, últimos partidos y creación de torneos mediante un formulario conectado a la API. La portada del jugador muestra su actividad y tarjetas de torneos abiertos con inscripción directa. Una inscripción actualiza los cupos, los contadores y la lista personal; el botón queda deshabilitado para evitar duplicados.
+
+Los torneos abiertos tienen plazas disponibles y todavía no tienen grupos asignados. Los listados completos siguen disponibles desde cada tarjeta. La portada limita las vistas previas a cinco torneos/partidos y cuatro torneos abiertos; los contadores muestran los totales del servidor.
+
+### Llaves de eliminación directa
+
+El detalle del torneo incluye un bracket simétrico oscuro y dorado de hasta 16 clasificados. Los participantes, equipos, ganadores y conexiones provienen de `GET /torneos/{id}/bracket`; no hay equipos fijos ni resultados almacenados solo en el navegador. El administrador selecciona un equipo para guardar el ganador; los jugadores consultan el cuadro. Cambiar un ganador limpia únicamente sus rondas dependientes y revoca el campeón anterior. El cuadro conserva su ancho con desplazamiento horizontal en móvil.
+
+Se usa la generación de llaves existente del backend: pasan dos jugadores por grupo. Para obtener 16 clasificados, configurar ocho grupos con al menos dos jugadores cada uno y generar las llaves desde el detalle. Elegir un ganador no inventa un marcador; este se puede registrar desde el detalle del partido.
+
+`tests/bracket-api.mjs` verifica un cuadro completo, permisos, cambio de ganador y limpieza de dependencias. Ejecutar solo con el esquema de pruebas aislado y `PANEL_TEST_BASE_URL=http://localhost:8082`, igual que la prueba de integración del panel.

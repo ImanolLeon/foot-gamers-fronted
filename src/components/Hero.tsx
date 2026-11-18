@@ -1,6 +1,6 @@
 import { Shield } from './Icons';
 import { PitchMarkings } from './PitchMarkings';
-import {  NEXT_MATCH } from '../data/content';
+import { NEXT_MATCH } from '../data/content';
 
 export function Hero() {
   return (
@@ -10,7 +10,6 @@ export function Hero() {
 
       <div className="container-page relative z-10 grid items-center gap-14 pt-12 pb-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(360px,0.88fr)] lg:gap-16 lg:pt-20 lg:pb-24">
         <div>
-        
           <h1
             className="hero-in mt-5 font-poster text-[clamp(56px,8vw,104px)] leading-[0.82] font-extrabold tracking-[-0.005em] text-pitch uppercase"
             style={{ animationDelay: '120ms' }}
@@ -26,18 +25,15 @@ export function Hero() {
             className="hero-in mt-7 max-w-[45ch] text-[17px] leading-[1.6] text-pitch/75"
             style={{ animationDelay: '200ms' }}
           >
-            Torneos semanales de PES 2021 para jugadores que quieren algo más que partidos
-            sueltos. Elige equipo, compite y deja tu nombre en la tabla.
+            Torneos semanales de PES 2021 para jugadores que quieren algo más
+            que partidos sueltos. Elige equipo, compite y deja tu nombre en la
+            tabla.
           </p>
 
           <div
             className="hero-in mt-8 flex flex-wrap items-center gap-x-7 gap-y-4"
             style={{ animationDelay: '280ms' }}
-          >
-      
-          </div>
-
-         
+          ></div>
         </div>
 
         {/* Cartelera de la próxima jornada: el objeto memorable de la página */}
@@ -54,7 +50,9 @@ export function Hero() {
           <div className="relative rounded-[3px] bg-pitch-deep px-6 pt-6 pb-7 text-chalk shadow-[10px_10px_0_0_rgba(12,59,39,0.1)]">
             <div className="flex items-start justify-between gap-5">
               <div>
-                <p className="text-xs font-medium text-chalk/55">Próxima jornada</p>
+                <p className="text-xs font-medium text-chalk/55">
+                  Próxima jornada
+                </p>
                 <p className="mt-2 font-poster text-[28px] leading-[0.9] font-bold uppercase">
                   {NEXT_MATCH.competition}
                 </p>
@@ -63,7 +61,9 @@ export function Hero() {
                 <span className="block font-poster text-[64px] leading-[0.7] font-extrabold text-magenta">
                   {NEXT_MATCH.matchday}
                 </span>
-                <span className="mt-1 block text-[11px] text-chalk/50">Jornada</span>
+                <span className="mt-1 block text-[11px] text-chalk/50">
+                  Jornada
+                </span>
               </div>
             </div>
 
@@ -97,8 +97,12 @@ export function Hero() {
                   <Shield className="size-4" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold">Rival por sorteo</span>
-                  <span className="block text-[11px] text-chalk/55">Se sortea el viernes</span>
+                  <span className="block text-sm font-semibold">
+                    Rival por sorteo
+                  </span>
+                  <span className="block text-[11px] text-chalk/55">
+                    Se sortea el viernes
+                  </span>
                 </span>
               </div>
             </div>

@@ -8,7 +8,12 @@ type IconProps = { className?: string };
 /* ---------- Marca ---------- */
 
 export const Crown = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M12 2.6l2.3 2.2 3-.7-.9 3 2.3 2.1-2.7 1.3v6.9H7V10.4L4.3 9.1 6.6 7 5.7 4l3 .7L12 2.6z" />
   </svg>
 );
@@ -16,7 +21,12 @@ export const Crown = ({ className }: IconProps) => (
 /* ---------- Acciones ---------- */
 
 export const Play = ({ className }: IconProps) => (
-  <svg viewBox="0 0 16 16" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M4 2.2v11.6c0 .5.6.8 1 .5l9-5.8a.6.6 0 000-1l-9-5.8c-.4-.3-1 0-1 .5z" />
   </svg>
 );
@@ -181,25 +191,45 @@ export const Shield = ({ className }: IconProps) => (
 /* ---------- Redes sociales ---------- */
 
 export const Discord = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M19.3 5.6A16 16 0 0015.4 4.4l-.2.4a12 12 0 013.2 1.6 13.4 13.4 0 00-12.8 0 12 12 0 013.2-1.6l-.2-.4A16 16 0 004.7 5.6C2.1 9.3 1.4 13 1.7 16.7a16 16 0 004.9 2.5l1-1.7c-.6-.2-1.2-.5-1.7-.9l.4-.3a11.4 11.4 0 009.4 0l.4.3c-.5.4-1.1.7-1.7.9l1 1.7a16 16 0 004.9-2.5c.4-4.3-.7-8.1-3-11.1zM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z" />
   </svg>
 );
 
 export const WhatsApp = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M12.04 2A9.9 9.9 0 002.1 11.9c0 1.75.46 3.46 1.34 4.96L2 22l5.28-1.38a9.9 9.9 0 004.76 1.21h.01a9.9 9.9 0 009.94-9.9A9.9 9.9 0 0012.05 2zm0 18.02h-.01a8.2 8.2 0 01-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.2 8.2 0 01-1.26-4.36 8.24 8.24 0 018.25-8.23 8.2 8.2 0 018.24 8.24 8.24 8.24 0 01-8.24 8.22zm4.5-6.17c-.25-.13-1.46-.72-1.68-.8-.23-.08-.4-.12-.56.13-.16.24-.64.8-.79.96-.14.17-.29.19-.54.07-.25-.13-1.04-.39-1.98-1.23-.73-.65-1.22-1.46-1.37-1.71-.14-.24-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.03s.87 2.36.99 2.52c.12.17 1.72 2.62 4.16 3.67.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z" />
   </svg>
 );
 
 export const Facebook = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.54-1.5h1.66V3.6c-.29-.04-1.27-.12-2.4-.12-2.38 0-4 1.45-4 4.11v2.28H7.6V13h2.7v8h3.2z" />
   </svg>
 );
 
 export const Twitter = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M18.2 2.3h3.3l-7.2 8.3L22.8 21.7h-6.6l-5.2-6.8-5.9 6.8H1.8l7.7-8.8L1.4 2.3h6.8l4.7 6.2 5.3-6.2zm-1.2 17.5h1.9L7 4.1H5l12 15.7z" />
   </svg>
 );
@@ -220,7 +250,12 @@ export const Instagram = ({ className }: IconProps) => (
 );
 
 export const Youtube = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <path d="M22.5 7.2a2.8 2.8 0 00-1.95-1.97C18.85 4.8 12 4.8 12 4.8s-6.85 0-8.55.43A2.8 2.8 0 001.5 7.2C1.06 8.9 1.06 12 1.06 12s0 3.1.44 4.8a2.8 2.8 0 001.95 1.97c1.7.43 8.55.43 8.55.43s6.85 0 8.55-.43a2.8 2.8 0 001.95-1.97c.44-1.7.44-4.8.44-4.8s0-3.1-.44-4.8zM9.9 15.3V8.7l5.7 3.3-5.7 3.3z" />
   </svg>
 );
@@ -394,7 +429,14 @@ export const AlertCircle = ({ className }: IconProps) => (
 
 export const Spinner = ({ className }: IconProps) => (
   <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-    <circle cx="12" cy="12" r="9.2" stroke="currentColor" strokeOpacity=".3" strokeWidth="2.6" />
+    <circle
+      cx="12"
+      cy="12"
+      r="9.2"
+      stroke="currentColor"
+      strokeOpacity=".3"
+      strokeWidth="2.6"
+    />
     <path
       d="M21.2 12a9.2 9.2 0 00-9.2-9.2"
       stroke="currentColor"
@@ -566,7 +608,12 @@ export const Plus = ({ className }: IconProps) => (
 );
 
 export const Dots = ({ className }: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
     <circle cx="5.5" cy="12" r="1.7" />
     <circle cx="12" cy="12" r="1.7" />
     <circle cx="18.5" cy="12" r="1.7" />

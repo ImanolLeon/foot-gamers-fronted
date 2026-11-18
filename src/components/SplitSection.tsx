@@ -29,20 +29,25 @@ export function SplitSection() {
           </h2>
 
           <p className="mt-6 max-w-[48ch] text-[16px] leading-[1.7] text-pitch/75">
-            Entras a un grupo de gente que sabe lo que es perder una final en el minuto 90 y
-            volver la semana siguiente. Encontrar rival es lo de menos; lo difícil es no quedarte
-            con las ganas de la revancha.
+            Entras a un grupo de gente que sabe lo que es perder una final en el
+            minuto 90 y volver la semana siguiente. Encontrar rival es lo de
+            menos; lo difícil es no quedarte con las ganas de la revancha.
           </p>
 
           <ul className="mt-8 grid gap-4  pt-7">
             {SPLIT_CHECKS.map((item) => (
-              <li key={item} className="flex items-start gap-3.5 text-[15px] leading-[1.5] text-pitch">
-                <span className="mt-[7px] size-2 flex-none bg-magenta" aria-hidden="true" />
+              <li
+                key={item}
+                className="flex items-start gap-3.5 text-[15px] leading-[1.5] text-pitch"
+              >
+                <span
+                  className="mt-[7px] size-2 flex-none bg-magenta"
+                  aria-hidden="true"
+                />
                 {item}
               </li>
             ))}
           </ul>
-
         </div>
       </div>
     </section>

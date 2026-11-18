@@ -32,7 +32,11 @@ export class ApiError extends Error {
   /** Errores por campo que devuelve `MethodArgumentNotValidException`. */
   readonly errores: Record<string, string>;
 
-  constructor(message: string, status: number, errores: Record<string, string> = {}) {
+  constructor(
+    message: string,
+    status: number,
+    errores: Record<string, string> = {},
+  ) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
@@ -44,10 +48,17 @@ export class ApiError extends Error {
   }
 }
 
-export async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+export async function request<T>(
+  path: string,
+  init: RequestInit = {},
+): Promise<T> {
   const headers = new Headers(init.headers);
   // `FormData` fija su propio Content-Type (con el boundary): no lo pisamos.
-  if (init.body && !(init.body instanceof FormData) && !headers.has('Content-Type')) {
+  if (
+    init.body &&
+    !(init.body instanceof FormData) &&
+    !headers.has('Content-Type')
+  ) {
     headers.set('Content-Type', 'application/json');
   }
 
@@ -58,7 +69,10 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   try {
     response = await fetch(`${API_BASE_URL}${path}`, { ...init, headers });
   } catch {
-    throw new ApiError('No se pudo conectar con el servidor. ¿Está el backend encendido?', 0);
+    throw new ApiError(
+      'No se pudo conectar con el servidor. ¿Está el backend encendido?',
+      0,
+    );
   }
 
   if (response.status === 204) return undefined as T;
@@ -66,8 +80,8 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   // El proxy de Vite devuelve 502/503/504 cuando Spring Boot no está levantado.
   if (response.status >= 502) {
     throw new ApiError(
-      'El servidor no está disponible. Levanta el backend (Spring Boot) e inténtalo de nuevo.',
-      response.status
+      'No se pudo conectar con el backend. Inicia Spring Boot en el puerto configurado en VITE_PROXY_TARGET (8080 por defecto) y pulsa Actualizar.',
+      response.status,
     );
   }
 
@@ -75,12 +89,12 @@ export async function request<T>(path: string, init: RequestInit = {}): Promise<
   if (response.status === 403 && rawBody.trim() === 'Invalid CORS request') {
     throw new ApiError(
       `El backend rechazó el origen ${window.location.origin}. Configura CORS_ALLOWED_ORIGINS en el backend y reinícialo.`,
-      response.status
+      response.status,
     );
   }
   let body: ApiErrorBody | null = null;
   try {
-    body = rawBody ? JSON.parse(rawBody) as ApiErrorBody : null;
+    body = rawBody ? (JSON.parse(rawBody) as ApiErrorBody) : null;
   } catch {
     // Algunos errores de infraestructura no tienen un cuerpo JSON.
   }

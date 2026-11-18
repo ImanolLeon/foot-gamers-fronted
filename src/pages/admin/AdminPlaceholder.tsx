@@ -1,7 +1,10 @@
 import { useLocation } from 'react-router-dom';
 import { Plus } from '../../components/Icons';
 import { ADMIN_NAV } from '../../data/panelNav';
-import { ADMIN_JUGADORES_RELLENO, ADMIN_PARTICIPANTES_RELLENO } from '../../data/admin';
+import {
+  ADMIN_JUGADORES_RELLENO,
+  ADMIN_PARTICIPANTES_RELLENO,
+} from '../../data/admin';
 
 /** Tabla de relleno para que se vea el flujo antes de conectar la API. */
 function TablaRelleno({
@@ -18,9 +21,15 @@ function TablaRelleno({
       <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-5">
         <div>
           <h2 className="font-display text-lg font-bold">{titulo}</h2>
-          <p className="text-xs text-ink-3">Datos de relleno · se conectará al backend</p>
+          <p className="text-xs text-ink-3">
+            Datos de relleno · se conectará al backend
+          </p>
         </div>
-        <button type="button" className="panel-btn btn-sm" aria-label="Acción pendiente">
+        <button
+          type="button"
+          className="panel-btn btn-sm"
+          aria-label="Acción pendiente"
+        >
           <Plus className="size-4" />
           Crear
         </button>
@@ -73,7 +82,10 @@ export function AdminPlaceholder() {
   return (
     <div className="grid gap-6">
       <section className="panel-surface-flat p-8 text-center">
-        <span className="panel-badge mx-auto size-14 rounded-2xl" aria-hidden="true">
+        <span
+          className="panel-badge mx-auto size-14 rounded-2xl"
+          aria-hidden="true"
+        >
           {seccion && <seccion.Icon className="size-6" />}
         </span>
         <h2 className="mt-5 font-display text-xl font-bold">
