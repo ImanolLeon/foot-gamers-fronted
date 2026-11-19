@@ -1,5 +1,5 @@
-import { Instagram, Twitter, Youtube } from './Icons';
-import { FOOTER_COLUMNS } from '../data/content';
+import { Instagram, Twitter, Youtube } from '../Icons';
+import { FOOTER_COLUMNS } from '../../data/landing/content';
 
 const SOCIALS = [
   { label: 'Twitter', Icon: Twitter },
@@ -15,7 +15,7 @@ export function Footer() {
           {/* Marca */}
           <div>
             <a
-              href="#inicio"
+              href="inicio"
               className="inline-flex items-center gap-3"
               aria-label="Foot Gamer's, ir al inicio"
             >
@@ -39,7 +39,7 @@ export function Footer() {
               {SOCIALS.map(({ label, Icon }) => (
                 <a
                   key={label}
-                  href="#comunidad"
+                  href="comunidad"
                   aria-label={`${label} de Foot Gamer's`}
                   className="grid size-9 place-items-center rounded-[2px] border border-chalk/20 text-chalk/65 transition-colors hover:border-magenta hover:text-magenta"
                 >

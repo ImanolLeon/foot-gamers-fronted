@@ -1,4 +1,4 @@
-import { FEATURES } from '../data/content';
+import { FEATURES } from '../../data/landing/content';
 
 export function Features() {
   return (

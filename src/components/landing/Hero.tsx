@@ -1,6 +1,6 @@
-import { Shield } from './Icons';
+import { Shield } from '../Icons';
 import { PitchMarkings } from './PitchMarkings';
-import { NEXT_MATCH } from '../data/content';
+import { NEXT_MATCH } from '../../data/landing/content';
 
 export function Hero() {
   return (

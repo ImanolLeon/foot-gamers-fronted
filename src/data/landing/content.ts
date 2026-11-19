@@ -6,7 +6,7 @@ import {
   Trophy,
   Users,
   WhatsApp,
-} from '../components/Icons';
+} from '../../components/Icons';
 
 /* ---------- Navegación ---------- */
 

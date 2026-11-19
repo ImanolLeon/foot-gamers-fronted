@@ -1,4 +1,4 @@
-import { SPLIT_CHECKS, SPLIT_IMAGE } from '../data/content';
+import { SPLIT_CHECKS, SPLIT_IMAGE } from '../../data/landing/content';
 
 export function SplitSection() {
   return (

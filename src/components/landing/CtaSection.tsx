@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { PitchMarkings } from './PitchMarkings';
-import { RegistroModal } from './RegistroModal';
-import { CTA_DETAILS } from '../data/content';
+import { RegistroModal } from '../RegistroModal';
+import { CTA_DETAILS } from '../../data/landing/content';
 
 export function CtaSection() {
   const [registroAbierto, setRegistroAbierto] = useState(false);

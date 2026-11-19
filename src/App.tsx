@@ -6,7 +6,7 @@ import {
   PlayerDetail,
 } from './pages/panel/DetailPages';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Landing } from './pages/Landing';
+import { Landing } from './pages/landing/Landing';
 import { Login } from './pages/Login';
 import { AuthCallback } from './pages/AuthCallback';
 import { NotFound } from './pages/NotFound';

@@ -1,5 +1,5 @@
-import { Shield } from './Icons';
-import { TEAMS } from '../data/content';
+import { Shield } from '../Icons';
+import { TEAMS } from '../../data/landing/content';
 
 export function Teams() {
   return (

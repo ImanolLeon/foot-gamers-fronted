@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LayoutDashboard, LogOut } from './Icons';
-import { RegistroModal } from './RegistroModal';
-import { NAV_LINKS } from '../data/content';
-import { useActiveSection, useScrolled } from '../hooks';
-import { useAuth } from '../hooks/useAuth';
+import { LayoutDashboard, LogOut } from '../Icons';
+import { RegistroModal } from '../RegistroModal';
+import { NAV_LINKS } from '../../data/landing/content';
+import { useActiveSection, useScrolled } from '../../hooks/landing';
+import { useAuth } from '../../hooks/useAuth';
 
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.replace('#', ''));
 
@@ -57,7 +57,7 @@ export function Navbar() {
       >
         <div className="container-page flex h-full items-center justify-between gap-6">
           <a
-            href="#inicio"
+            href="inicio"
             className="flex-none"
             aria-label="Foot Gamer's, ir al inicio"
           >
